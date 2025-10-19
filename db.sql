@@ -1,112 +1,121 @@
+-- Enable foreign key constraints
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE Categories (
-    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
-    CategoryName VARCHAR(100) NOT NULL,
+    CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CategoryName TEXT NOT NULL,
     Description TEXT
 );
+
 CREATE TABLE Products (
-    ProductID INT PRIMARY KEY AUTO_INCREMENT,
-    ProductName VARCHAR(150) NOT NULL,
-    CategoryID INT,
-    UnitPrice DECIMAL(10,2) NOT NULL,
-    CostPrice DECIMAL(10,2) NOT NULL,
-    Unit VARCHAR(50), -- e.g., 'piece', 'kg', 'pack'
-    ReorderLevel INT DEFAULT 0,
-    Status ENUM('Active', 'Inactive') DEFAULT 'Active',
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ProductName TEXT NOT NULL,
+    CategoryID INTEGER,
+    UnitPrice REAL NOT NULL,
+    CostPrice REAL NOT NULL,
+    Unit TEXT,
+    ReorderLevel INTEGER DEFAULT 0,
+    Status TEXT CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active',
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
+
 CREATE TABLE Suppliers (
-    SupplierID INT PRIMARY KEY AUTO_INCREMENT,
-    SupplierName VARCHAR(150) NOT NULL,
-    ContactPerson VARCHAR(100),
-    Phone VARCHAR(50),
-    Email VARCHAR(100),
+    SupplierID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SupplierName TEXT NOT NULL,
+    ContactPerson TEXT,
+    Phone TEXT,
+    Email TEXT,
     Address TEXT
 );
+
 CREATE TABLE Purchases (
-    PurchaseID INT PRIMARY KEY AUTO_INCREMENT,
-    SupplierID INT NOT NULL,
+    PurchaseID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SupplierID INTEGER NOT NULL,
     PurchaseDate DATE NOT NULL,
-    TotalAmount DECIMAL(12,2),
+    TotalAmount REAL,
     FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
 
 CREATE TABLE PurchaseDetails (
-    PurchaseDetailID INT PRIMARY KEY AUTO_INCREMENT,
-    PurchaseID INT NOT NULL,
-    ProductID INT NOT NULL,
-    Quantity INT NOT NULL,
-    UnitCost DECIMAL(10,2) NOT NULL,
-    Subtotal DECIMAL(12,2) NOT NULL,
+    PurchaseDetailID INTEGER PRIMARY KEY AUTOINCREMENT,
+    PurchaseID INTEGER NOT NULL,
+    ProductID INTEGER NOT NULL,
+    Quantity INTEGER NOT NULL,
+    UnitCost REAL NOT NULL,
+    Subtotal REAL NOT NULL,
     FOREIGN KEY (PurchaseID) REFERENCES Purchases(PurchaseID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
 CREATE TABLE Inventory (
-    ProductID INT PRIMARY KEY,
-    QuantityInStock INT NOT NULL DEFAULT 0,
+    ProductID INTEGER PRIMARY KEY,
+    QuantityInStock INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
+
 CREATE TABLE Customers (
-    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
-    CustomerName VARCHAR(150) NOT NULL,
-    Phone VARCHAR(50),
-    Email VARCHAR(100),
+    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CustomerName TEXT NOT NULL,
+    Phone TEXT,
+    Email TEXT,
     Address TEXT
 );
+
 CREATE TABLE Sales (
-    SaleID INT PRIMARY KEY AUTO_INCREMENT,
-    CustomerID INT,
-    SaleDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    TotalAmount DECIMAL(12,2),
-    PaymentMethod ENUM('Cash', 'Card', 'Transfer', 'Other') NOT NULL,
+    SaleID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CustomerID INTEGER,
+    SaleDate DATETIME NOT NULL DEFAULT (datetime('now')),
+    TotalAmount REAL,
+    PaymentMethod TEXT CHECK (PaymentMethod IN ('Cash', 'Card', 'Transfer', 'Other')) NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
+
 CREATE TABLE SaleDetails (
-    SaleDetailID INT PRIMARY KEY AUTO_INCREMENT,
-    SaleID INT NOT NULL,
-    ProductID INT NOT NULL,
-    Quantity INT NOT NULL,
-    UnitPrice DECIMAL(10,2) NOT NULL,
-    Subtotal DECIMAL(12,2) NOT NULL,
+    SaleDetailID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SaleID INTEGER NOT NULL,
+    ProductID INTEGER NOT NULL,
+    Quantity INTEGER NOT NULL,
+    UnitPrice REAL NOT NULL,
+    Subtotal REAL NOT NULL,
     FOREIGN KEY (SaleID) REFERENCES Sales(SaleID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
+
 CREATE TABLE Employees (
-    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
-    FullName VARCHAR(150) NOT NULL,
-    Role ENUM('Admin', 'Cashier', 'Stocker') NOT NULL,
-    Phone VARCHAR(50),
-    Email VARCHAR(100),
-    Username VARCHAR(50) UNIQUE,
-    PasswordHash VARCHAR(255) NOT NULL
+    EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
+    FullName TEXT NOT NULL,
+    Role TEXT CHECK (Role IN ('Admin', 'Cashier', 'Stocker')) NOT NULL,
+    Phone TEXT,
+    Email TEXT,
+    Username TEXT UNIQUE,
+    PasswordHash TEXT NOT NULL
 );
+
 CREATE TABLE Payments (
-    PaymentID INT PRIMARY KEY AUTO_INCREMENT,
-    SaleID INT NOT NULL,
-    PaymentDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    AmountPaid DECIMAL(12,2) NOT NULL,
-    PaymentMethod ENUM('Cash', 'Card', 'Transfer', 'Other') NOT NULL,
+    PaymentID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SaleID INTEGER NOT NULL,
+    PaymentDate DATETIME NOT NULL DEFAULT (datetime('now')),
+    AmountPaid REAL NOT NULL,
+    PaymentMethod TEXT CHECK (PaymentMethod IN ('Cash', 'Card', 'Transfer', 'Other')) NOT NULL,
     FOREIGN KEY (SaleID) REFERENCES Sales(SaleID)
 );
 
-
--- Example trigger after purchase
+-- Trigger: After inserting a purchase detail, update inventory
 CREATE TRIGGER after_purchase_detail_insert
 AFTER INSERT ON PurchaseDetails
-FOR EACH ROW
 BEGIN
     INSERT INTO Inventory (ProductID, QuantityInStock)
     VALUES (NEW.ProductID, NEW.Quantity)
-    ON DUPLICATE KEY UPDATE QuantityInStock = QuantityInStock + NEW.Quantity;
+    ON CONFLICT(ProductID)
+    DO UPDATE SET QuantityInStock = QuantityInStock + NEW.Quantity;
 END;
 
-
--- Example trigger after sale
+-- Trigger: After inserting a sale detail, decrease inventory
 CREATE TRIGGER after_sale_detail_insert
 AFTER INSERT ON SaleDetails
-FOR EACH ROW
 BEGIN
     UPDATE Inventory
     SET QuantityInStock = QuantityInStock - NEW.Quantity
     WHERE ProductID = NEW.ProductID;
 END;
+
