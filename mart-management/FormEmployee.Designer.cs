@@ -45,11 +45,11 @@
             BtnClear = new Button();
             BtnUpdate = new Button();
             BtnSubmit = new Button();
-            dataGridView1 = new DataGridView();
+            DgvEmployee = new DataGridView();
             LblEmployee = new Label();
             BtnDelete = new Button();
             BtnEdit = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DgvEmployee).BeginInit();
             SuspendLayout();
             // 
             // LblFullName
@@ -196,13 +196,13 @@
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // DgvEmployee
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(238, 71);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(536, 348);
-            dataGridView1.TabIndex = 15;
+            DgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvEmployee.Location = new Point(238, 71);
+            DgvEmployee.Name = "DgvEmployee";
+            DgvEmployee.Size = new Size(536, 348);
+            DgvEmployee.TabIndex = 15;
             // 
             // LblEmployee
             // 
@@ -242,7 +242,7 @@
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblEmployee);
-            Controls.Add(dataGridView1);
+            Controls.Add(DgvEmployee);
             Controls.Add(BtnSubmit);
             Controls.Add(BtnUpdate);
             Controls.Add(BtnClear);
@@ -260,7 +260,7 @@
             Controls.Add(LblFullName);
             Name = "FormEmployee";
             Text = "FormEmployee";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DgvEmployee).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,7 +283,7 @@
         private Button BtnClear;
         private Button BtnUpdate;
         private Button BtnSubmit;
-        private DataGridView dataGridView1;
+        private DataGridView DgvEmployee;
         private Label LblEmployee;
         private Button BtnDelete;
         private Button BtnEdit;

@@ -8,7 +8,7 @@ namespace mart_management
         public FormEmployee()
         {
             InitializeComponent();
-            Test();
+            //Test();
         }
         private async Task Test()
         {
