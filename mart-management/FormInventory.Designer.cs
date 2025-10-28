@@ -1,6 +1,6 @@
 ﻿namespace mart_management
 {
-    partial class Inventory
+    partial class FormInventory
     {
         /// <summary>
         /// Required designer variable.

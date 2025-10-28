@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace mart_management
 {
-    public partial class Inventory : Form
+    public partial class FormInventory : Form
     {
-        public Inventory()
+        public FormInventory()
         {
             InitializeComponent();
         }

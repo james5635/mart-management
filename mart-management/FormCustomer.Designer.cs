@@ -1,6 +1,6 @@
 ﻿namespace mart_management
 {
-    partial class FromCustomer
+    partial class FormCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -193,7 +193,7 @@
             TxtPhone.Size = new Size(174, 29);
             TxtPhone.TabIndex = 56;
             // 
-            // FromCustomer
+            // FormCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -213,8 +213,8 @@
             Controls.Add(LblPhone);
             Controls.Add(LblAddress);
             Controls.Add(LblCustomerName);
-            Name = "FromCustomer";
-            Text = "FromCustomer";
+            Name = "FormCustomer";
+            Text = "FormCustomer";
             ((System.ComponentModel.ISupportInitialize)DgvCustomer).EndInit();
             ResumeLayout(false);
             PerformLayout();

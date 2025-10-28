@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace mart_management
 {
-    public partial class FromCustomer : Form
+    public partial class FormCustomer : Form
     {
-        public FromCustomer()
+        public FormCustomer()
         {
             InitializeComponent();
         }
