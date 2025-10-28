@@ -375,6 +375,7 @@
         private Button BtnDetail;
         private DateTimePicker DtpSaleDate;
         private Button BtnDelete;
+        private ComboBox CboSupplierID;
         private ComboBox CboCustomerID;
         private ToolTip toolTip1;
         private Button BtnEdit;
@@ -383,6 +384,8 @@
         private Button BtnSubmit;
         private Button BtnUpdate;
         private Button BtnClear;
+        private TextBox TxtSuppilerName;
+        private Label LblSuppilerName;
         private TextBox TxtPaymentMethod;
         private TextBox TxtCustomerName;
         private Label LblSaleDate;

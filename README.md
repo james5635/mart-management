@@ -9,3 +9,10 @@
 - [ ] FormSupplier
 - [ ] FormCustomer
 - [ ] FormInventory
+
+# Database
+
+```powershell
+dotnet ef migrations add <migration name>
+dotnet ef database update
+```

@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace mart_management
+{
+    public partial class FormStart : Form
+    {
+        public FormStart()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnCategory_Click(object sender, EventArgs e)
+        {
+            new FormCategory().Show();
+        }
+    }
+}

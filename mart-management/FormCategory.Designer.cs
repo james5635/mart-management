@@ -53,6 +53,7 @@
             BtnDelete.TabIndex = 65;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
@@ -63,6 +64,7 @@
             BtnEdit.TabIndex = 64;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // LblCategory
             // 
@@ -91,6 +93,7 @@
             BtnSubmit.TabIndex = 61;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnUpdate
             // 
@@ -101,6 +104,7 @@
             BtnUpdate.TabIndex = 60;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnClear
             // 
@@ -111,6 +115,7 @@
             BtnClear.TabIndex = 59;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // TxtDescription
             // 
