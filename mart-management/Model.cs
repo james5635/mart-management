@@ -1,9 +1,10 @@
-﻿using System;
+﻿using mart_management;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace mart_management
 {
@@ -32,6 +33,148 @@ namespace mart_management
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite($"Data Source={DbPath}");
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // ---- Seed Categories ----
+            modelBuilder.Entity<Category>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Category
+                {
+                    CategoryID = i,
+                    CategoryName = $"Category {i}",
+                    Description = $"Description for Category {i}"
+                })
+            );
+
+            // ---- Seed Customers ----
+            modelBuilder.Entity<Customer>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Customer
+                {
+                    CustomerID = i,
+                    CustomerName = $"Customer {i}",
+                    Phone = $"09876543{i:D2}",
+                    Email = $"customer{i}@example.com",
+                    Address = $"Customer Address {i}"
+                })
+            );
+
+            // ---- Seed Suppliers ----
+            modelBuilder.Entity<Supplier>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Supplier
+                {
+                    SupplierID = i,
+                    SupplierName = $"Supplier {i}",
+                    ContactPerson = $"Contact {i}",
+                    Phone = $"01234567{i:D2}",
+                    Email = $"supplier{i}@example.com",
+                    Address = $"Address {i}"
+                })
+            );
+
+            // ---- Seed Products ----
+            modelBuilder.Entity<Product>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Product
+                {
+                    ProductID = i,
+                    ProductName = $"Product {i}",
+                    CategoryID = (i % 10) + 1,
+                    UnitPrice = 10 + i,
+                    CostPrice = 8 + i,
+                    Unit = "pcs",
+                    ReorderLevel = 5,
+                    Status = "Active"
+                })
+            );
+
+           
+
+            // ---- Seed Purchases ----
+            modelBuilder.Entity<Purchase>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Purchase
+                {
+                    PurchaseID = i,
+                    SupplierID = i,
+                    PurchaseDate = new DateTime(2024, 01, 01).AddDays(-i),
+                    TotalAmount = 100 + i
+                })
+            );
+
+            // ---- Seed PurchaseDetails ----
+            modelBuilder.Entity<PurchaseDetail>().HasData(
+                Enumerable.Range(1, 10).Select(i => new PurchaseDetail
+                {
+                    PurchaseDetailID = i,
+                    PurchaseID = i,
+                    ProductID = i,
+                    Quantity = 10 + i,
+                    UnitCost = 8 + i,
+                    Subtotal = (10 + i) * (8 + i)
+                })
+            );
+
+            // ---- Seed Inventory ----
+            modelBuilder.Entity<Inventory>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Inventory
+                {
+                    ProductID = i,
+                    QuantityInStock = 50 + i
+                })
+            );
+
+           
+
+            // ---- Seed Sales ----
+            modelBuilder.Entity<Sale>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Sale
+                {
+                    SaleID = i,
+                    CustomerID = i,
+                    SaleDate = new DateTime(2024, 01, 01).AddDays(-i),
+                    TotalAmount = 200 + i,
+                    PaymentMethod = "Cash"
+                })
+            );
+
+            // ---- Seed SaleDetails ----
+            modelBuilder.Entity<SaleDetail>().HasData(
+                Enumerable.Range(1, 10).Select(i => new SaleDetail
+                {
+                    SaleDetailID = i,
+                    SaleID = i,
+                    ProductID = i,
+                    Quantity = 2 + i,
+                    UnitPrice = 15 + i,
+                    Subtotal = (2 + i) * (15 + i)
+                })
+            );
+
+            // ---- Seed Employees ----
+            modelBuilder.Entity<Employee>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Employee
+                {
+                    EmployeeID = i,
+                    FullName = $"Employee {i}",
+                    Role = i % 3 == 0 ? "Admin" : i % 2 == 0 ? "Cashier" : "Stocker",
+                    Phone = $"09912345{i:D2}",
+                    Email = $"employee{i}@example.com",
+                    Username = $"user{i}",
+                    PasswordHash = $"hash{i}"
+                })
+            );
+
+            // ---- Seed Payments ----
+            modelBuilder.Entity<Payment>().HasData(
+                Enumerable.Range(1, 10).Select(i => new Payment
+                {
+                    PaymentID = i,
+                    SaleID = i,
+                    PaymentDate = new DateTime(2024, 01, 01).AddDays(-i),
+                    AmountPaid = 100 + i,
+                    PaymentMethod = "Cash"
+                })
+            );
+        }
     }
 
     public class Category
@@ -258,5 +401,5 @@ namespace mart_management
         [RegularExpression("Cash|Card|Transfer|Other")]
         public string PaymentMethod { get; set; }
     }
-
 }
+
