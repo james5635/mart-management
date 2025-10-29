@@ -39,8 +39,7 @@ namespace mart_management
             await db.SaveChangesAsync();
             MessageBox.Show("Category Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
-            TxtCategoryName.Clear();
-            TxtDescription.Clear();
+            BtnClear_Click(null!, null!);
 
             ReadCategory();
         }
@@ -91,8 +90,7 @@ namespace mart_management
             MessageBox.Show("Category Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             _currentCategory = null!;
-            TxtCategoryName.Clear();
-            TxtDescription.Clear();
+            BtnClear_Click(null!, null!);
 
             ReadCategory();
         }
