@@ -51,22 +51,24 @@
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(761, 328);
+            BtnDelete.Location = new Point(792, 327);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 37;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(665, 328);
+            BtnEdit.Location = new Point(696, 327);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 36;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // LblPayment
             // 
@@ -83,7 +85,7 @@
             DgvPayment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPayment.Location = new Point(300, 60);
             DgvPayment.Name = "DgvPayment";
-            DgvPayment.Size = new Size(536, 246);
+            DgvPayment.Size = new Size(567, 246);
             DgvPayment.TabIndex = 34;
             // 
             // BtnSubmit
@@ -95,6 +97,7 @@
             BtnSubmit.TabIndex = 33;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnUpdate
             // 
@@ -105,6 +108,7 @@
             BtnUpdate.TabIndex = 32;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnClear
             // 
@@ -115,6 +119,7 @@
             BtnClear.TabIndex = 31;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // TxtPaymentMethod
             // 
@@ -195,7 +200,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 415);
+            ClientSize = new Size(889, 415);
             Controls.Add(DtpPaymentDate);
             Controls.Add(CboSaleID);
             Controls.Add(BtnDelete);

@@ -32,6 +32,7 @@
             TxtCustomer = new Button();
             BtnSupplier = new Button();
             BtnEmployee = new Button();
+            BtnPayment = new Button();
             SuspendLayout();
             // 
             // BtnCategory
@@ -78,11 +79,23 @@
             BtnEmployee.UseVisualStyleBackColor = true;
             BtnEmployee.Click += BtnEmployee_Click;
             // 
+            // BtnPayment
+            // 
+            BtnPayment.Font = new Font("Segoe UI", 12F);
+            BtnPayment.Location = new Point(12, 180);
+            BtnPayment.Name = "BtnPayment";
+            BtnPayment.Size = new Size(288, 36);
+            BtnPayment.TabIndex = 4;
+            BtnPayment.Text = "Payment";
+            BtnPayment.UseVisualStyleBackColor = true;
+            BtnPayment.Click += BtnPayment_Click;
+            // 
             // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 450);
+            Controls.Add(BtnPayment);
             Controls.Add(BtnEmployee);
             Controls.Add(BtnSupplier);
             Controls.Add(TxtCustomer);
@@ -98,5 +111,6 @@
         private Button TxtCustomer;
         private Button BtnSupplier;
         private Button BtnEmployee;
+        private Button BtnPayment;
     }
 }

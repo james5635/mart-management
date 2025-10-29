@@ -13,7 +13,7 @@ namespace mart_management
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Payment> Payements { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseDetail> PurchaseDetails { get; set; }

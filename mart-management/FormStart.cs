@@ -36,5 +36,10 @@ namespace mart_management
         {
             new FormEmployee().Show();
         }
+
+        private void BtnPayment_Click(object sender, EventArgs e)
+        {
+            new FormPayment().Show();
+        }
     }
 }
