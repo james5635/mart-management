@@ -16,5 +16,9 @@ namespace mart_management
         {
             InitializeComponent();
         }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

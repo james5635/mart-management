@@ -40,14 +40,16 @@
             toolTip1 = new ToolTip(components);
             LblQuantityInStock = new Label();
             LblProductID = new Label();
-            TxtProductID = new TextBox();
+            TxtProductName = new TextBox();
+            CboProductID = new ComboBox();
+            LblProductName = new Label();
             ((System.ComponentModel.ISupportInitialize)DgvInventory).BeginInit();
             SuspendLayout();
             // 
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(620, 301);
+            BtnDelete.Location = new Point(659, 291);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 52;
@@ -57,7 +59,7 @@
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(524, 301);
+            BtnEdit.Location = new Point(563, 291);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 51;
@@ -79,13 +81,13 @@
             DgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvInventory.Location = new Point(269, 39);
             DgvInventory.Name = "DgvInventory";
-            DgvInventory.Size = new Size(426, 235);
+            DgvInventory.Size = new Size(465, 235);
             DgvInventory.TabIndex = 49;
             // 
             // BtnSubmit
             // 
             BtnSubmit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnSubmit.Location = new Point(14, 280);
+            BtnSubmit.Location = new Point(203, 292);
             BtnSubmit.Name = "BtnSubmit";
             BtnSubmit.Size = new Size(75, 36);
             BtnSubmit.TabIndex = 48;
@@ -95,7 +97,7 @@
             // BtnUpdate
             // 
             BtnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnUpdate.Location = new Point(111, 227);
+            BtnUpdate.Location = new Point(110, 292);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(75, 36);
             BtnUpdate.TabIndex = 47;
@@ -105,18 +107,19 @@
             // BtnClear
             // 
             BtnClear.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnClear.Location = new Point(12, 227);
+            BtnClear.Location = new Point(17, 292);
             BtnClear.Name = "BtnClear";
             BtnClear.Size = new Size(75, 36);
             BtnClear.TabIndex = 46;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // TxtQuantityInStock
             // 
             TxtQuantityInStock.BorderStyle = BorderStyle.FixedSingle;
             TxtQuantityInStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtQuantityInStock.Location = new Point(12, 171);
+            TxtQuantityInStock.Location = new Point(12, 242);
             TxtQuantityInStock.Name = "TxtQuantityInStock";
             TxtQuantityInStock.Size = new Size(174, 29);
             TxtQuantityInStock.TabIndex = 45;
@@ -125,7 +128,7 @@
             // 
             LblQuantityInStock.AutoSize = true;
             LblQuantityInStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblQuantityInStock.Location = new Point(12, 141);
+            LblQuantityInStock.Location = new Point(12, 212);
             LblQuantityInStock.Name = "LblQuantityInStock";
             LblQuantityInStock.Size = new Size(120, 21);
             LblQuantityInStock.TabIndex = 44;
@@ -141,21 +144,43 @@
             LblProductID.TabIndex = 40;
             LblProductID.Text = "ProductID";
             // 
-            // TxtProductID
+            // TxtProductName
             // 
-            TxtProductID.BorderStyle = BorderStyle.FixedSingle;
-            TxtProductID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtProductID.Location = new Point(12, 89);
-            TxtProductID.Name = "TxtProductID";
-            TxtProductID.Size = new Size(174, 29);
-            TxtProductID.TabIndex = 55;
+            TxtProductName.BorderStyle = BorderStyle.FixedSingle;
+            TxtProductName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtProductName.Location = new Point(12, 166);
+            TxtProductName.Name = "TxtProductName";
+            TxtProductName.ReadOnly = true;
+            TxtProductName.Size = new Size(174, 29);
+            TxtProductName.TabIndex = 55;
             // 
-            // Inventory
+            // CboProductID
+            // 
+            CboProductID.Font = new Font("Segoe UI", 12F);
+            CboProductID.FormattingEnabled = true;
+            CboProductID.Location = new Point(12, 89);
+            CboProductID.Name = "CboProductID";
+            CboProductID.Size = new Size(174, 29);
+            CboProductID.TabIndex = 57;
+            // 
+            // LblProductName
+            // 
+            LblProductName.AutoSize = true;
+            LblProductName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblProductName.Location = new Point(12, 136);
+            LblProductName.Name = "LblProductName";
+            LblProductName.Size = new Size(106, 21);
+            LblProductName.TabIndex = 56;
+            LblProductName.Text = "ProductName";
+            // 
+            // FormInventory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(711, 344);
-            Controls.Add(TxtProductID);
+            ClientSize = new Size(751, 359);
+            Controls.Add(CboProductID);
+            Controls.Add(LblProductName);
+            Controls.Add(TxtProductName);
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblInventory);
@@ -166,7 +191,7 @@
             Controls.Add(TxtQuantityInStock);
             Controls.Add(LblQuantityInStock);
             Controls.Add(LblProductID);
-            Name = "Inventory";
+            Name = "FormInventory";
             Text = "Inventory";
             ((System.ComponentModel.ISupportInitialize)DgvInventory).EndInit();
             ResumeLayout(false);
@@ -191,7 +216,9 @@
         private ComboBox CboSaleID;
         private Label LblQuantityInStock;
         private Label LblProductID;
-        private TextBox TxtProductID;
+        private TextBox TxtProductName;
         private TextBox TxtQuantityInStock;
+        private ComboBox CboProductID;
+        private Label LblProductName;
     }
 }

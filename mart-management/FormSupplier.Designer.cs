@@ -53,22 +53,24 @@
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(695, 413);
+            BtnDelete.Location = new Point(857, 417);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 37;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(599, 413);
+            BtnEdit.Location = new Point(761, 417);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 36;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // LblSupplier
             // 
@@ -85,7 +87,7 @@
             DgvSupplier.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvSupplier.Location = new Point(234, 71);
             DgvSupplier.Name = "DgvSupplier";
-            DgvSupplier.Size = new Size(536, 331);
+            DgvSupplier.Size = new Size(698, 331);
             DgvSupplier.TabIndex = 34;
             // 
             // BtnSubmit
@@ -97,6 +99,7 @@
             BtnSubmit.TabIndex = 33;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnUpdate
             // 
@@ -107,6 +110,7 @@
             BtnUpdate.TabIndex = 32;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnClear
             // 
@@ -117,6 +121,7 @@
             BtnClear.TabIndex = 31;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // TxtAddress
             // 
@@ -217,7 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 477);
+            ClientSize = new Size(953, 477);
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblSupplier);

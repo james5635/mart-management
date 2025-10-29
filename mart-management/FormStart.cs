@@ -26,5 +26,10 @@ namespace mart_management
         {
             new FormCustomer().Show();
         }
+
+        private void BtnSupplier_Click(object sender, EventArgs e)
+        {
+            new FormSupplier().Show();
+        }
     }
 }
