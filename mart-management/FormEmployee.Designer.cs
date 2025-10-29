@@ -38,7 +38,7 @@
             LblPhone = new Label();
             TxtEmail = new TextBox();
             LblEmail = new Label();
-            txtUsername = new TextBox();
+            TxtUsername = new TextBox();
             LblUsername = new Label();
             TxtPassword = new TextBox();
             LblPassword = new Label();
@@ -128,14 +128,14 @@
             LblEmail.TabIndex = 6;
             LblEmail.Text = "Email";
             // 
-            // txtUsername
+            // TxtUsername
             // 
-            txtUsername.BorderStyle = BorderStyle.FixedSingle;
-            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsername.Location = new Point(25, 360);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(174, 29);
-            txtUsername.TabIndex = 9;
+            TxtUsername.BorderStyle = BorderStyle.FixedSingle;
+            TxtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtUsername.Location = new Point(25, 360);
+            TxtUsername.Name = "TxtUsername";
+            TxtUsername.Size = new Size(174, 29);
+            TxtUsername.TabIndex = 9;
             // 
             // LblUsername
             // 
@@ -175,6 +175,7 @@
             BtnClear.TabIndex = 12;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // BtnUpdate
             // 
@@ -185,6 +186,7 @@
             BtnUpdate.TabIndex = 13;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnSubmit
             // 
@@ -195,13 +197,14 @@
             BtnSubmit.TabIndex = 14;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // DgvEmployee
             // 
             DgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvEmployee.Location = new Point(238, 71);
             DgvEmployee.Name = "DgvEmployee";
-            DgvEmployee.Size = new Size(536, 348);
+            DgvEmployee.Size = new Size(810, 348);
             DgvEmployee.TabIndex = 15;
             // 
             // LblEmployee
@@ -217,28 +220,30 @@
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(699, 431);
+            BtnDelete.Location = new Point(973, 432);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 18;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(603, 431);
+            BtnEdit.Location = new Point(877, 432);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 17;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // FormEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 522);
+            ClientSize = new Size(1060, 533);
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblEmployee);
@@ -248,7 +253,7 @@
             Controls.Add(BtnClear);
             Controls.Add(TxtPassword);
             Controls.Add(LblPassword);
-            Controls.Add(txtUsername);
+            Controls.Add(TxtUsername);
             Controls.Add(LblUsername);
             Controls.Add(TxtEmail);
             Controls.Add(LblEmail);
@@ -276,7 +281,7 @@
         private Label LblPhone;
         private TextBox TxtEmail;
         private Label LblEmail;
-        private TextBox txtUsername;
+        private TextBox TxtUsername;
         private Label LblUsername;
         private TextBox TxtPassword;
         private Label LblPassword;

@@ -31,5 +31,10 @@ namespace mart_management
         {
             new FormSupplier().Show();
         }
+
+        private void BtnEmployee_Click(object sender, EventArgs e)
+        {
+            new FormEmployee().Show();
+        }
     }
 }

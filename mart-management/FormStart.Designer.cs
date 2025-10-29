@@ -31,6 +31,7 @@
             BtnCategory = new Button();
             TxtCustomer = new Button();
             BtnSupplier = new Button();
+            BtnEmployee = new Button();
             SuspendLayout();
             // 
             // BtnCategory
@@ -66,11 +67,23 @@
             BtnSupplier.UseVisualStyleBackColor = true;
             BtnSupplier.Click += BtnSupplier_Click;
             // 
+            // BtnEmployee
+            // 
+            BtnEmployee.Font = new Font("Segoe UI", 12F);
+            BtnEmployee.Location = new Point(12, 138);
+            BtnEmployee.Name = "BtnEmployee";
+            BtnEmployee.Size = new Size(288, 36);
+            BtnEmployee.TabIndex = 3;
+            BtnEmployee.Text = "Employee";
+            BtnEmployee.UseVisualStyleBackColor = true;
+            BtnEmployee.Click += BtnEmployee_Click;
+            // 
             // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 450);
+            Controls.Add(BtnEmployee);
             Controls.Add(BtnSupplier);
             Controls.Add(TxtCustomer);
             Controls.Add(BtnCategory);
@@ -84,5 +97,6 @@
         private Button BtnCategory;
         private Button TxtCustomer;
         private Button BtnSupplier;
+        private Button BtnEmployee;
     }
 }
