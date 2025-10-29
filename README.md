@@ -1,13 +1,13 @@
-- [ ] FormCategory
-- [ ] FormEmployee
-- [ ] FormPayment
+- [x] FormCategory
+- [x] FormEmployee
+- [x] FormPayment
 - [ ] FormProduct
 - [ ] FormPurchase
 - [ ] FormPurchaseDetail
 - [ ] FormSale
 - [ ] FormSaleDetail
-- [ ] FormSupplier
-- [ ] FormCustomer
+- [x] FormSupplier
+- [x] FormCustomer
 - [ ] FormInventory
 
 # Database
