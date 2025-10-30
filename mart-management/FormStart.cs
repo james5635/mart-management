@@ -41,5 +41,10 @@ namespace mart_management
         {
             new FormPayment().Show();
         }
+
+        private void BtnSale_Click(object sender, EventArgs e)
+        {
+            new FormSale().Show();
+        }
     }
 }
