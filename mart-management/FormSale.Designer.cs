@@ -61,6 +61,7 @@
             BtnAddProduct = new Button();
             BtnEditProduct = new Button();
             BtnDeleteProduct = new Button();
+            BtnUpdateProduct = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvSale).BeginInit();
             SuspendLayout();
             // 
@@ -223,6 +224,7 @@
             BtnDetail.TabIndex = 56;
             BtnDetail.Text = "Detail";
             BtnDetail.UseVisualStyleBackColor = true;
+            BtnDetail.Click += BtnDetail_Click;
             // 
             // CboProductID
             // 
@@ -336,17 +338,19 @@
             // 
             // LvProduct
             // 
+            LvProduct.FullRowSelect = true;
             LvProduct.Location = new Point(14, 458);
             LvProduct.Name = "LvProduct";
             LvProduct.Size = new Size(798, 217);
             LvProduct.TabIndex = 68;
             LvProduct.UseCompatibleStateImageBehavior = false;
             LvProduct.View = View.Details;
+            LvProduct.ItemSelectionChanged += LvProduct_ItemSelectionChanged;
             // 
             // BtnAddProduct
             // 
             BtnAddProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddProduct.Location = new Point(828, 616);
+            BtnAddProduct.Location = new Point(830, 639);
             BtnAddProduct.Name = "BtnAddProduct";
             BtnAddProduct.Size = new Size(124, 36);
             BtnAddProduct.TabIndex = 69;
@@ -357,28 +361,42 @@
             // BtnEditProduct
             // 
             BtnEditProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEditProduct.Location = new Point(830, 551);
+            BtnEditProduct.Location = new Point(830, 517);
             BtnEditProduct.Name = "BtnEditProduct";
             BtnEditProduct.Size = new Size(124, 36);
             BtnEditProduct.TabIndex = 70;
             BtnEditProduct.Text = "Edit Product";
             BtnEditProduct.UseVisualStyleBackColor = true;
+            BtnEditProduct.Click += BtnEditProduct_Click;
             // 
             // BtnDeleteProduct
             // 
             BtnDeleteProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDeleteProduct.Location = new Point(828, 490);
+            BtnDeleteProduct.Location = new Point(828, 458);
             BtnDeleteProduct.Name = "BtnDeleteProduct";
             BtnDeleteProduct.Size = new Size(124, 36);
             BtnDeleteProduct.TabIndex = 71;
             BtnDeleteProduct.Text = "Delete Product";
             BtnDeleteProduct.UseVisualStyleBackColor = true;
+            BtnDeleteProduct.Click += BtnDeleteProduct_Click;
+            // 
+            // BtnUpdateProduct
+            // 
+            BtnUpdateProduct.Font = new Font("Segoe UI", 11F);
+            BtnUpdateProduct.Location = new Point(830, 579);
+            BtnUpdateProduct.Name = "BtnUpdateProduct";
+            BtnUpdateProduct.Size = new Size(122, 36);
+            BtnUpdateProduct.TabIndex = 72;
+            BtnUpdateProduct.Text = "Update Product";
+            BtnUpdateProduct.UseVisualStyleBackColor = true;
+            BtnUpdateProduct.Click += BtnUpdateProduct_Click;
             // 
             // FormSale
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(972, 738);
+            Controls.Add(BtnUpdateProduct);
             Controls.Add(BtnDeleteProduct);
             Controls.Add(BtnEditProduct);
             Controls.Add(BtnAddProduct);
@@ -451,5 +469,6 @@
         private Button BtnAddProduct;
         private Button BtnEditProduct;
         private Button BtnDeleteProduct;
+        private Button BtnUpdateProduct;
     }
 }

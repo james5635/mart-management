@@ -40,6 +40,7 @@
             LvSale.Size = new Size(776, 72);
             LvSale.TabIndex = 0;
             LvSale.UseCompatibleStateImageBehavior = false;
+            LvSale.ItemSelectionChanged += LvSale_ItemSelectionChanged;
             // 
             // LblSaleDetail
             // 
@@ -58,6 +59,7 @@
             LvSaleDetail.Size = new Size(776, 279);
             LvSaleDetail.TabIndex = 2;
             LvSaleDetail.UseCompatibleStateImageBehavior = false;
+            LvSaleDetail.ItemSelectionChanged += LvSaleDetail_ItemSelectionChanged;
             // 
             // FormSaleDetail
             // 

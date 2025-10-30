@@ -16,6 +16,7 @@ namespace mart_management
     {
         private Sale? _currentSale;
         private List<SaleDetail> _currentSaleDetails;
+        private ListViewItem _currentLvProductItem;
 
         public FormSale()
         {
@@ -92,11 +93,13 @@ namespace mart_management
             TxtCustomerName.Clear();
             DtpSaleDate.Value = DateTime.Now;
             TxtPaymentMethod.Clear();
+
             CboProductID.Text = null;
             TxtProductName.Clear();
             TxtQuantity.Clear();
             TxtUnitPrice.Clear();
             TxtSubtotal.Clear();
+
             LvProduct.Columns.Clear();
             LvProduct.Items.Clear();
         }
@@ -306,6 +309,76 @@ namespace mart_management
                     MessageBox.Show("Sale Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ReadSale();
                 }
+            }
+        }
+
+        private void BtnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in LvProduct.SelectedItems)
+            {
+                LvProduct.Items.Remove(item);
+            }
+        }
+
+        private void LvProduct_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected == false)
+                if (LvProduct.FocusedItem != null)
+                {
+                    LvProduct.FocusedItem.Focused = false;
+                }
+        }
+
+        private void BtnEditProduct_Click(object sender, EventArgs e)
+        {
+            var item = LvProduct.FocusedItem;
+
+            if (item != null)
+            {
+                CboProductID.Text = item.SubItems[0].Text;
+                TxtProductName.Text = item.SubItems[1].Text;
+                TxtQuantity.Text = item.SubItems[2].Text;
+                TxtUnitPrice.Text = item.SubItems[3].Text;
+                TxtSubtotal.Text = item.SubItems[4].Text;
+
+                _currentLvProductItem = item;
+
+            }
+
+        }
+
+        private void BtnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            if (_currentLvProductItem != null)
+            {
+                _currentLvProductItem.SubItems[0].Text = CboProductID.Text;
+                _currentLvProductItem.SubItems[1].Text = TxtProductName.Text;
+                _currentLvProductItem.SubItems[2].Text = TxtQuantity.Text;
+                _currentLvProductItem.SubItems[3].Text = TxtUnitPrice.Text;
+                _currentLvProductItem.SubItems[4].Text = TxtSubtotal.Text;
+
+                CboProductID.Text = null;
+                TxtProductName.Clear();
+                TxtQuantity.Clear();
+                TxtUnitPrice.Clear();
+                TxtSubtotal.Clear();
+
+                _currentLvProductItem = null!;
+            }
+
+        }
+
+        private void BtnDetail_Click(object sender, EventArgs e)
+        {
+            using var db = new MartManagementContext();
+            var selectedRow = DgvSale.CurrentRow;
+            if (selectedRow != null)
+            {
+                int saleId = (int)selectedRow.Cells["SaleID"].Value;
+                var sale = db.Sales.Include(s => s.Customer).Include(s => s.SaleDetails)
+                    .ThenInclude(sd => sd.Product).ThenInclude(p => p.Category)
+                    .FirstOrDefault(s => s.SaleID == saleId);
+                new FormSaleDetail(sale).ShowDialog();
             }
         }
     }
