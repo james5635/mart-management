@@ -4,11 +4,11 @@
 - [ ] FormProduct
 - [ ] FormPurchase
 - [ ] FormPurchaseDetail
-- [ ] FormSale
-- [ ] FormSaleDetail
+- [x] FormSale
+- [x] FormSaleDetail
 - [x] FormSupplier
 - [x] FormCustomer
-- [ ] FormInventory
+- [x] FormInventory
 
 # Database
 

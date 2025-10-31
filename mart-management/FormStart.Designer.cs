@@ -34,6 +34,7 @@
             BtnEmployee = new Button();
             BtnPayment = new Button();
             BtnSale = new Button();
+            BtnInventory = new Button();
             SuspendLayout();
             // 
             // BtnCategory
@@ -102,11 +103,23 @@
             BtnSale.UseVisualStyleBackColor = true;
             BtnSale.Click += BtnSale_Click;
             // 
+            // BtnInventory
+            // 
+            BtnInventory.Font = new Font("Segoe UI", 12F);
+            BtnInventory.Location = new Point(12, 264);
+            BtnInventory.Name = "BtnInventory";
+            BtnInventory.Size = new Size(288, 36);
+            BtnInventory.TabIndex = 6;
+            BtnInventory.Text = "Inventory";
+            BtnInventory.UseVisualStyleBackColor = true;
+            BtnInventory.Click += BtnInventory_Click;
+            // 
             // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 450);
+            Controls.Add(BtnInventory);
             Controls.Add(BtnSale);
             Controls.Add(BtnPayment);
             Controls.Add(BtnEmployee);
@@ -126,5 +139,6 @@
         private Button BtnEmployee;
         private Button BtnPayment;
         private Button BtnSale;
+        private Button BtnInventory;
     }
 }

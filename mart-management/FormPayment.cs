@@ -23,8 +23,6 @@ namespace mart_management
 
         }
 
-
-
         private void BtnClear_Click(object sender, EventArgs e)
         {
             CboSaleID.Text = null;

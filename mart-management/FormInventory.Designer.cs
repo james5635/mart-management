@@ -55,6 +55,7 @@
             BtnDelete.TabIndex = 52;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
@@ -65,6 +66,7 @@
             BtnEdit.TabIndex = 51;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // LblInventory
             // 
@@ -93,6 +95,7 @@
             BtnSubmit.TabIndex = 48;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnUpdate
             // 
@@ -103,6 +106,7 @@
             BtnUpdate.TabIndex = 47;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnClear
             // 
@@ -162,6 +166,7 @@
             CboProductID.Name = "CboProductID";
             CboProductID.Size = new Size(174, 29);
             CboProductID.TabIndex = 57;
+            CboProductID.SelectionChangeCommitted += CboProductID_SelectionChangeCommitted;
             // 
             // LblProductName
             // 
