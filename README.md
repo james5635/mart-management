@@ -1,9 +1,9 @@
 - [x] FormCategory
 - [x] FormEmployee
 - [x] FormPayment
-- [ ] FormProduct
-- [ ] FormPurchase
-- [ ] FormPurchaseDetail
+- [x] FormProduct
+- [x] FormPurchase
+- [x] FormPurchaseDetail
 - [x] FormSale
 - [x] FormSaleDetail
 - [x] FormSupplier

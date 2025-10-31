@@ -40,6 +40,7 @@
             LvPurchaseDetail.Size = new Size(776, 279);
             LvPurchaseDetail.TabIndex = 5;
             LvPurchaseDetail.UseCompatibleStateImageBehavior = false;
+            LvPurchaseDetail.ItemSelectionChanged += LvPurchaseDetail_ItemSelectionChanged;
             // 
             // LblPurchaseDetail
             // 
@@ -58,6 +59,7 @@
             LvPurchase.Size = new Size(776, 72);
             LvPurchase.TabIndex = 3;
             LvPurchase.UseCompatibleStateImageBehavior = false;
+            LvPurchase.ItemSelectionChanged += LvPurchase_ItemSelectionChanged;
             // 
             // FormPurchaseDetail
             // 
