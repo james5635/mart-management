@@ -35,6 +35,8 @@
             BtnPayment = new Button();
             BtnSale = new Button();
             BtnInventory = new Button();
+            BtnProduct = new Button();
+            BtnPurchase = new Button();
             SuspendLayout();
             // 
             // BtnCategory
@@ -114,11 +116,35 @@
             BtnInventory.UseVisualStyleBackColor = true;
             BtnInventory.Click += BtnInventory_Click;
             // 
+            // BtnProduct
+            // 
+            BtnProduct.Font = new Font("Segoe UI", 12F);
+            BtnProduct.Location = new Point(12, 306);
+            BtnProduct.Name = "BtnProduct";
+            BtnProduct.Size = new Size(288, 36);
+            BtnProduct.TabIndex = 7;
+            BtnProduct.Text = "Product";
+            BtnProduct.UseVisualStyleBackColor = true;
+            BtnProduct.Click += BtnProduct_Click;
+            // 
+            // BtnPurchase
+            // 
+            BtnPurchase.Font = new Font("Segoe UI", 12F);
+            BtnPurchase.Location = new Point(12, 348);
+            BtnPurchase.Name = "BtnPurchase";
+            BtnPurchase.Size = new Size(288, 36);
+            BtnPurchase.TabIndex = 8;
+            BtnPurchase.Text = "Purchase";
+            BtnPurchase.UseVisualStyleBackColor = true;
+            BtnPurchase.Click += BtnPurchase_Click;
+            // 
             // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 450);
+            Controls.Add(BtnPurchase);
+            Controls.Add(BtnProduct);
             Controls.Add(BtnInventory);
             Controls.Add(BtnSale);
             Controls.Add(BtnPayment);
@@ -140,5 +166,7 @@
         private Button BtnPayment;
         private Button BtnSale;
         private Button BtnInventory;
+        private Button BtnProduct;
+        private Button BtnPurchase;
     }
 }

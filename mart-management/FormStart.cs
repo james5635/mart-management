@@ -51,5 +51,15 @@ namespace mart_management
         {
             new FormInventory().Show();
         }
+
+        private void BtnProduct_Click(object sender, EventArgs e)
+        {
+            new FormProduct().Show();
+        }
+
+        private void BtnPurchase_Click(object sender, EventArgs e)
+        {
+            new FormPurchase().Show();
+        }
     }
 }

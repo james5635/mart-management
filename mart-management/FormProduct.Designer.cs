@@ -36,22 +36,22 @@
             BtnSubmit = new Button();
             BtnUpdate = new Button();
             BtnClear = new Button();
-            this.TxtUnit = new TextBox();
-            this.LblUnit = new Label();
-            this.TxtCostPrice = new TextBox();
-            this.LblCostPrice = new Label();
-            this.TxtUnitPrice = new TextBox();
-            this.TxtCategoryName = new TextBox();
-            this.LblCategoryName = new Label();
+            TxtUnit = new TextBox();
+            LblUnit = new Label();
+            TxtCostPrice = new TextBox();
+            LblCostPrice = new Label();
+            TxtUnitPrice = new TextBox();
+            TxtCategoryName = new TextBox();
+            LblCategoryName = new Label();
             LblCategoryID = new Label();
             TxtProductName = new TextBox();
             toolTip1 = new ToolTip(components);
-            this.LblUnitPrice = new Label();
+            LblUnitPrice = new Label();
             LblProductName = new Label();
-            this.TxtStatus = new TextBox();
-            this.LblStatus = new Label();
-            this.TxtReorderLevel = new TextBox();
-            this.LblReorderLevel = new Label();
+            TxtStatus = new TextBox();
+            LblStatus = new Label();
+            TxtReorderLevel = new TextBox();
+            LblReorderLevel = new Label();
             CboCategoryID = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)DgvProduct).BeginInit();
             SuspendLayout();
@@ -59,22 +59,24 @@
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(939, 446);
+            BtnDelete.Location = new Point(1105, 440);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 37;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(843, 446);
+            BtnEdit.Location = new Point(1009, 440);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 36;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // LblProduct
             // 
@@ -91,7 +93,7 @@
             DgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvProduct.Location = new Point(235, 71);
             DgvProduct.Name = "DgvProduct";
-            DgvProduct.Size = new Size(779, 348);
+            DgvProduct.Size = new Size(945, 348);
             DgvProduct.TabIndex = 34;
             // 
             // BtnSubmit
@@ -103,6 +105,7 @@
             BtnSubmit.TabIndex = 33;
             BtnSubmit.Text = "Submit";
             BtnSubmit.UseVisualStyleBackColor = true;
+            BtnSubmit.Click += BtnSubmit_Click;
             // 
             // BtnUpdate
             // 
@@ -113,6 +116,7 @@
             BtnUpdate.TabIndex = 32;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // BtnClear
             // 
@@ -123,73 +127,74 @@
             BtnClear.TabIndex = 31;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = true;
+            BtnClear.Click += BtnClear_Click;
             // 
             // TxtUnit
             // 
-            this.TxtUnit.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtUnit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtUnit.Location = new Point(22, 432);
-            this.TxtUnit.Name = "TxtUnit";
-            this.TxtUnit.Size = new Size(174, 29);
-            this.TxtUnit.TabIndex = 30;
+            TxtUnit.BorderStyle = BorderStyle.FixedSingle;
+            TxtUnit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtUnit.Location = new Point(22, 432);
+            TxtUnit.Name = "TxtUnit";
+            TxtUnit.Size = new Size(174, 29);
+            TxtUnit.TabIndex = 30;
             // 
             // LblUnit
             // 
-            this.LblUnit.AutoSize = true;
-            this.LblUnit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblUnit.Location = new Point(22, 404);
-            this.LblUnit.Name = "LblUnit";
-            this.LblUnit.Size = new Size(39, 21);
-            this.LblUnit.TabIndex = 29;
-            this.LblUnit.Text = "Unit";
+            LblUnit.AutoSize = true;
+            LblUnit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblUnit.Location = new Point(22, 404);
+            LblUnit.Name = "LblUnit";
+            LblUnit.Size = new Size(39, 21);
+            LblUnit.TabIndex = 29;
+            LblUnit.Text = "Unit";
             // 
             // TxtCostPrice
             // 
-            this.TxtCostPrice.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtCostPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtCostPrice.Location = new Point(22, 360);
-            this.TxtCostPrice.Name = "TxtCostPrice";
-            this.TxtCostPrice.Size = new Size(174, 29);
-            this.TxtCostPrice.TabIndex = 28;
+            TxtCostPrice.BorderStyle = BorderStyle.FixedSingle;
+            TxtCostPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtCostPrice.Location = new Point(22, 360);
+            TxtCostPrice.Name = "TxtCostPrice";
+            TxtCostPrice.Size = new Size(174, 29);
+            TxtCostPrice.TabIndex = 28;
             // 
             // LblCostPrice
             // 
-            this.LblCostPrice.AutoSize = true;
-            this.LblCostPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblCostPrice.Location = new Point(22, 332);
-            this.LblCostPrice.Name = "LblCostPrice";
-            this.LblCostPrice.Size = new Size(75, 21);
-            this.LblCostPrice.TabIndex = 27;
-            this.LblCostPrice.Text = "CostPrice";
+            LblCostPrice.AutoSize = true;
+            LblCostPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblCostPrice.Location = new Point(22, 332);
+            LblCostPrice.Name = "LblCostPrice";
+            LblCostPrice.Size = new Size(75, 21);
+            LblCostPrice.TabIndex = 27;
+            LblCostPrice.Text = "CostPrice";
             // 
             // TxtUnitPrice
             // 
-            this.TxtUnitPrice.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtUnitPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtUnitPrice.Location = new Point(22, 288);
-            this.TxtUnitPrice.Name = "TxtUnitPrice";
-            this.TxtUnitPrice.Size = new Size(174, 29);
-            this.TxtUnitPrice.TabIndex = 26;
+            TxtUnitPrice.BorderStyle = BorderStyle.FixedSingle;
+            TxtUnitPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtUnitPrice.Location = new Point(22, 288);
+            TxtUnitPrice.Name = "TxtUnitPrice";
+            TxtUnitPrice.Size = new Size(174, 29);
+            TxtUnitPrice.TabIndex = 26;
             // 
             // TxtCategoryName
             // 
-            this.TxtCategoryName.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtCategoryName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtCategoryName.Location = new Point(22, 219);
-            this.TxtCategoryName.Name = "TxtCategoryName";
-            this.TxtCategoryName.ReadOnly = true;
-            this.TxtCategoryName.Size = new Size(174, 29);
-            this.TxtCategoryName.TabIndex = 24;
+            TxtCategoryName.BorderStyle = BorderStyle.FixedSingle;
+            TxtCategoryName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtCategoryName.Location = new Point(22, 219);
+            TxtCategoryName.Name = "TxtCategoryName";
+            TxtCategoryName.ReadOnly = true;
+            TxtCategoryName.Size = new Size(174, 29);
+            TxtCategoryName.TabIndex = 24;
             // 
             // LblCategoryName
             // 
-            this.LblCategoryName.AutoSize = true;
-            this.LblCategoryName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblCategoryName.Location = new Point(22, 191);
-            this.LblCategoryName.Name = "LblCategoryName";
-            this.LblCategoryName.Size = new Size(115, 21);
-            this.LblCategoryName.TabIndex = 23;
-            this.LblCategoryName.Text = "CategoryName";
+            LblCategoryName.AutoSize = true;
+            LblCategoryName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblCategoryName.Location = new Point(22, 191);
+            LblCategoryName.Name = "LblCategoryName";
+            LblCategoryName.Size = new Size(115, 21);
+            LblCategoryName.TabIndex = 23;
+            LblCategoryName.Text = "CategoryName";
             // 
             // LblCategoryID
             // 
@@ -212,13 +217,13 @@
             // 
             // LblUnitPrice
             // 
-            this.LblUnitPrice.AutoSize = true;
-            this.LblUnitPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblUnitPrice.Location = new Point(22, 260);
-            this.LblUnitPrice.Name = "LblUnitPrice";
-            this.LblUnitPrice.Size = new Size(73, 21);
-            this.LblUnitPrice.TabIndex = 25;
-            this.LblUnitPrice.Text = "UnitPrice";
+            LblUnitPrice.AutoSize = true;
+            LblUnitPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblUnitPrice.Location = new Point(22, 260);
+            LblUnitPrice.Name = "LblUnitPrice";
+            LblUnitPrice.Size = new Size(73, 21);
+            LblUnitPrice.TabIndex = 25;
+            LblUnitPrice.Text = "UnitPrice";
             // 
             // LblProductName
             // 
@@ -232,41 +237,41 @@
             // 
             // TxtStatus
             // 
-            this.TxtStatus.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtStatus.Location = new Point(22, 577);
-            this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new Size(174, 29);
-            this.TxtStatus.TabIndex = 41;
+            TxtStatus.BorderStyle = BorderStyle.FixedSingle;
+            TxtStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtStatus.Location = new Point(22, 577);
+            TxtStatus.Name = "TxtStatus";
+            TxtStatus.Size = new Size(174, 29);
+            TxtStatus.TabIndex = 41;
             // 
             // LblStatus
             // 
-            this.LblStatus.AutoSize = true;
-            this.LblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblStatus.Location = new Point(22, 549);
-            this.LblStatus.Name = "LblStatus";
-            this.LblStatus.Size = new Size(52, 21);
-            this.LblStatus.TabIndex = 40;
-            this.LblStatus.Text = "Status";
+            LblStatus.AutoSize = true;
+            LblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblStatus.Location = new Point(22, 549);
+            LblStatus.Name = "LblStatus";
+            LblStatus.Size = new Size(52, 21);
+            LblStatus.TabIndex = 40;
+            LblStatus.Text = "Status";
             // 
             // TxtReorderLevel
             // 
-            this.TxtReorderLevel.BorderStyle = BorderStyle.FixedSingle;
-            this.TxtReorderLevel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtReorderLevel.Location = new Point(22, 505);
-            this.TxtReorderLevel.Name = "TxtReorderLevel";
-            this.TxtReorderLevel.Size = new Size(174, 29);
-            this.TxtReorderLevel.TabIndex = 39;
+            TxtReorderLevel.BorderStyle = BorderStyle.FixedSingle;
+            TxtReorderLevel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtReorderLevel.Location = new Point(22, 505);
+            TxtReorderLevel.Name = "TxtReorderLevel";
+            TxtReorderLevel.Size = new Size(174, 29);
+            TxtReorderLevel.TabIndex = 39;
             // 
             // LblReorderLevel
             // 
-            this.LblReorderLevel.AutoSize = true;
-            this.LblReorderLevel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.LblReorderLevel.Location = new Point(22, 477);
-            this.LblReorderLevel.Name = "LblReorderLevel";
-            this.LblReorderLevel.Size = new Size(102, 21);
-            this.LblReorderLevel.TabIndex = 38;
-            this.LblReorderLevel.Text = "ReorderLevel";
+            LblReorderLevel.AutoSize = true;
+            LblReorderLevel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblReorderLevel.Location = new Point(22, 477);
+            LblReorderLevel.Name = "LblReorderLevel";
+            LblReorderLevel.Size = new Size(102, 21);
+            LblReorderLevel.TabIndex = 38;
+            LblReorderLevel.Text = "ReorderLevel";
             // 
             // CboCategoryID
             // 
@@ -276,17 +281,18 @@
             CboCategoryID.Name = "CboCategoryID";
             CboCategoryID.Size = new Size(174, 29);
             CboCategoryID.TabIndex = 42;
+            CboCategoryID.SelectionChangeCommitted += CboCategoryID_SelectionChangeCommitted;
             // 
             // FormProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1028, 684);
+            ClientSize = new Size(1202, 684);
             Controls.Add(CboCategoryID);
-            Controls.Add(this.TxtStatus);
-            Controls.Add(this.LblStatus);
-            Controls.Add(this.TxtReorderLevel);
-            Controls.Add(this.LblReorderLevel);
+            Controls.Add(TxtStatus);
+            Controls.Add(LblStatus);
+            Controls.Add(TxtReorderLevel);
+            Controls.Add(LblReorderLevel);
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblProduct);
@@ -294,16 +300,16 @@
             Controls.Add(BtnSubmit);
             Controls.Add(BtnUpdate);
             Controls.Add(BtnClear);
-            Controls.Add(this.TxtUnit);
-            Controls.Add(this.LblUnit);
-            Controls.Add(this.TxtCostPrice);
-            Controls.Add(this.LblCostPrice);
-            Controls.Add(this.TxtUnitPrice);
-            Controls.Add(this.TxtCategoryName);
-            Controls.Add(this.LblCategoryName);
+            Controls.Add(TxtUnit);
+            Controls.Add(LblUnit);
+            Controls.Add(TxtCostPrice);
+            Controls.Add(LblCostPrice);
+            Controls.Add(TxtUnitPrice);
+            Controls.Add(TxtCategoryName);
+            Controls.Add(LblCategoryName);
             Controls.Add(LblCategoryID);
             Controls.Add(TxtProductName);
-            Controls.Add(this.LblUnitPrice);
+            Controls.Add(LblUnitPrice);
             Controls.Add(LblProductName);
             Name = "FormProduct";
             Text = "FormProduct";
