@@ -62,8 +62,7 @@ namespace mart_management
                 // Create and add items
                 foreach (var detail in sale.SaleDetails)
                 {
-                    ListViewItem detailItem = new ListViewItem($"{detail.SaleDetailID}");
-                    detailItem.SubItems.Add($"{detail.ProductID}");
+                    ListViewItem detailItem = new ListViewItem($"{detail.ProductID}");
                     detailItem.SubItems.Add(detail.Product.ProductName);
                     detailItem.SubItems.Add(detail.Product.Category.CategoryName);
                     detailItem.SubItems.Add($"{detail.Quantity}");

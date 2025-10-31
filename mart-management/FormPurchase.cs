@@ -120,6 +120,12 @@ namespace mart_management
             product.SubItems.Add(TxtUnitCost.Text);
             product.SubItems.Add(TxtSubtotal.Text);
             LvProduct.Items.Add(product);
+
+            CboProductID.Text = null;
+            TxtProductName.Clear();
+            TxtQuantity.Clear();
+            TxtUnitCost.Clear();
+            TxtSubtotal.Clear();
         }
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
@@ -226,6 +232,8 @@ namespace mart_management
             }
 
             using var db = new MartManagementContext();
+
+            _currentPurchase.Supplier = null; // clear tracked navigation
 
             _currentPurchase.SupplierID = int.Parse(CboSupplierID.Text);
             _currentPurchase.PurchaseDate = DtpPurchaseDate.Value;

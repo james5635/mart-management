@@ -125,6 +125,12 @@ namespace mart_management
             product.SubItems.Add(TxtUnitPrice.Text);
             product.SubItems.Add(TxtSubtotal.Text);
             LvProduct.Items.Add(product);
+
+            CboProductID.Text = null;
+            TxtProductName.Clear();
+            TxtQuantity.Clear();
+            TxtUnitPrice.Clear();
+            TxtSubtotal.Clear();
         }
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -251,6 +257,8 @@ namespace mart_management
             }
 
             using var db = new MartManagementContext();
+
+            _currentSale.Customer = null; // clear tracked navigation
 
             _currentSale.CustomerID = int.Parse(CboCustomerID.Text);
             _currentSale.SaleDate = DtpSaleDate.Value;

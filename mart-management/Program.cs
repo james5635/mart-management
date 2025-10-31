@@ -11,7 +11,14 @@ namespace mart_management
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormStart());
+            try
+            {
+                Application.Run(new FormStart());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
