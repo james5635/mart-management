@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mart_management;
 
@@ -10,9 +11,11 @@ using mart_management;
 namespace mart_management.Migrations
 {
     [DbContext(typeof(MartManagementContext))]
-    partial class MartManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20251029103103_SeedDatabase")]
+    partial class SeedDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
@@ -432,14 +435,14 @@ namespace mart_management.Migrations
 
                     b.HasIndex("SaleID");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payements");
 
                     b.HasData(
                         new
                         {
                             PaymentID = 1,
                             AmountPaid = 101.0,
-                            PaymentDate = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 28, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(7972),
                             PaymentMethod = "Cash",
                             SaleID = 1
                         },
@@ -447,7 +450,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 2,
                             AmountPaid = 102.0,
-                            PaymentDate = new DateTime(2023, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 27, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9540),
                             PaymentMethod = "Cash",
                             SaleID = 2
                         },
@@ -455,7 +458,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 3,
                             AmountPaid = 103.0,
-                            PaymentDate = new DateTime(2023, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 26, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9549),
                             PaymentMethod = "Cash",
                             SaleID = 3
                         },
@@ -463,7 +466,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 4,
                             AmountPaid = 104.0,
-                            PaymentDate = new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 25, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9554),
                             PaymentMethod = "Cash",
                             SaleID = 4
                         },
@@ -471,7 +474,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 5,
                             AmountPaid = 105.0,
-                            PaymentDate = new DateTime(2023, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 24, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9559),
                             PaymentMethod = "Cash",
                             SaleID = 5
                         },
@@ -479,7 +482,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 6,
                             AmountPaid = 106.0,
-                            PaymentDate = new DateTime(2023, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 23, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9577),
                             PaymentMethod = "Cash",
                             SaleID = 6
                         },
@@ -487,7 +490,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 7,
                             AmountPaid = 107.0,
-                            PaymentDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 22, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9727),
                             PaymentMethod = "Cash",
                             SaleID = 7
                         },
@@ -495,7 +498,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 8,
                             AmountPaid = 108.0,
-                            PaymentDate = new DateTime(2023, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 21, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9735),
                             PaymentMethod = "Cash",
                             SaleID = 8
                         },
@@ -503,7 +506,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 9,
                             AmountPaid = 109.0,
-                            PaymentDate = new DateTime(2023, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 20, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9740),
                             PaymentMethod = "Cash",
                             SaleID = 9
                         },
@@ -511,7 +514,7 @@ namespace mart_management.Migrations
                         {
                             PaymentID = 10,
                             AmountPaid = 110.0,
-                            PaymentDate = new DateTime(2023, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentDate = new DateTime(2025, 10, 19, 3, 31, 1, 156, DateTimeKind.Local).AddTicks(9749),
                             PaymentMethod = "Cash",
                             SaleID = 10
                         });
@@ -691,70 +694,70 @@ namespace mart_management.Migrations
                         new
                         {
                             PurchaseID = 1,
-                            PurchaseDate = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 28, 3, 31, 1, 143, DateTimeKind.Local).AddTicks(7248),
                             SupplierID = 1,
                             TotalAmount = 101.0
                         },
                         new
                         {
                             PurchaseID = 2,
-                            PurchaseDate = new DateTime(2023, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 27, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6226),
                             SupplierID = 2,
                             TotalAmount = 102.0
                         },
                         new
                         {
                             PurchaseID = 3,
-                            PurchaseDate = new DateTime(2023, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 26, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6426),
                             SupplierID = 3,
                             TotalAmount = 103.0
                         },
                         new
                         {
                             PurchaseID = 4,
-                            PurchaseDate = new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 25, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6440),
                             SupplierID = 4,
                             TotalAmount = 104.0
                         },
                         new
                         {
                             PurchaseID = 5,
-                            PurchaseDate = new DateTime(2023, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 24, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6446),
                             SupplierID = 5,
                             TotalAmount = 105.0
                         },
                         new
                         {
                             PurchaseID = 6,
-                            PurchaseDate = new DateTime(2023, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 23, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6476),
                             SupplierID = 6,
                             TotalAmount = 106.0
                         },
                         new
                         {
                             PurchaseID = 7,
-                            PurchaseDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 22, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6495),
                             SupplierID = 7,
                             TotalAmount = 107.0
                         },
                         new
                         {
                             PurchaseID = 8,
-                            PurchaseDate = new DateTime(2023, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 21, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6501),
                             SupplierID = 8,
                             TotalAmount = 108.0
                         },
                         new
                         {
                             PurchaseID = 9,
-                            PurchaseDate = new DateTime(2023, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 20, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6507),
                             SupplierID = 9,
                             TotalAmount = 109.0
                         },
                         new
                         {
                             PurchaseID = 10,
-                            PurchaseDate = new DateTime(2023, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PurchaseDate = new DateTime(2025, 10, 19, 3, 31, 1, 149, DateTimeKind.Local).AddTicks(6517),
                             SupplierID = 10,
                             TotalAmount = 110.0
                         });
@@ -913,7 +916,7 @@ namespace mart_management.Migrations
                             SaleID = 1,
                             CustomerID = 1,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 28, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(2744),
                             TotalAmount = 201.0
                         },
                         new
@@ -921,7 +924,7 @@ namespace mart_management.Migrations
                             SaleID = 2,
                             CustomerID = 2,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 27, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6659),
                             TotalAmount = 202.0
                         },
                         new
@@ -929,7 +932,7 @@ namespace mart_management.Migrations
                             SaleID = 3,
                             CustomerID = 3,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 26, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6684),
                             TotalAmount = 203.0
                         },
                         new
@@ -937,7 +940,7 @@ namespace mart_management.Migrations
                             SaleID = 4,
                             CustomerID = 4,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 25, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6697),
                             TotalAmount = 204.0
                         },
                         new
@@ -945,7 +948,7 @@ namespace mart_management.Migrations
                             SaleID = 5,
                             CustomerID = 5,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 24, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6709),
                             TotalAmount = 205.0
                         },
                         new
@@ -953,7 +956,7 @@ namespace mart_management.Migrations
                             SaleID = 6,
                             CustomerID = 6,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 23, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6742),
                             TotalAmount = 206.0
                         },
                         new
@@ -961,7 +964,7 @@ namespace mart_management.Migrations
                             SaleID = 7,
                             CustomerID = 7,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 22, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6751),
                             TotalAmount = 207.0
                         },
                         new
@@ -969,7 +972,7 @@ namespace mart_management.Migrations
                             SaleID = 8,
                             CustomerID = 8,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 21, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6759),
                             TotalAmount = 208.0
                         },
                         new
@@ -977,7 +980,7 @@ namespace mart_management.Migrations
                             SaleID = 9,
                             CustomerID = 9,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 20, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6768),
                             TotalAmount = 209.0
                         },
                         new
@@ -985,7 +988,7 @@ namespace mart_management.Migrations
                             SaleID = 10,
                             CustomerID = 10,
                             PaymentMethod = "Cash",
-                            SaleDate = new DateTime(2023, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SaleDate = new DateTime(2025, 10, 19, 3, 31, 1, 154, DateTimeKind.Local).AddTicks(6780),
                             TotalAmount = 210.0
                         });
                 });
