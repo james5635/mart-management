@@ -22,7 +22,7 @@ namespace mart_management
             new FormCategory().Show();
         }
 
-        private void TxtCustomer_Click(object sender, EventArgs e)
+        private void BtnCustomer_Click(object sender, EventArgs e)
         {
             new FormCustomer().Show();
         }

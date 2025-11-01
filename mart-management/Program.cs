@@ -13,7 +13,7 @@ namespace mart_management
             ApplicationConfiguration.Initialize();
             try
             {
-                Application.Run(new FormStart());
+                Application.Run(new FormLogin());
             }
             catch(Exception ex)
             {
