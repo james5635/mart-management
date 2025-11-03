@@ -10,10 +10,11 @@
 - [x] FormCustomer
 - [x] FormInventory
 
-# Database
+# Run the application
 
 ```powershell
-dotnet ef migrations add <migration name>
-dotnet ef database drop
+dotnet tool install --global dotnet-ef
+cd "mart-management"
 dotnet ef database update
+dotnet run
 ```

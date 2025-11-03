@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mart_management;
 
@@ -10,9 +11,11 @@ using mart_management;
 namespace mart_management.Migrations
 {
     [DbContext(typeof(MartManagementContext))]
-    partial class MartManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20251102135317_SeedRealWorldData")]
+    partial class SeedRealWorldData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
@@ -247,100 +250,100 @@ namespace mart_management.Migrations
                             EmployeeID = 1,
                             Email = "alice@shop.com",
                             FullName = "Alice Smith",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0101",
-                            Role = "Administrator",
-                            Username = "alice"
+                            Role = "Admin",
+                            Username = "admin_alice"
                         },
                         new
                         {
                             EmployeeID = 2,
                             Email = "bob@shop.com",
                             FullName = "Bob Johnson",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0102",
-                            Role = "Saler",
-                            Username = "bob"
+                            Role = "Cashier",
+                            Username = "cashier_bob"
                         },
                         new
                         {
                             EmployeeID = 3,
                             Email = "charlie@shop.com",
                             FullName = "Charlie Brown",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0103",
-                            Role = "Purchaser",
-                            Username = "charlie"
+                            Role = "Stocker",
+                            Username = "stocker_charlie"
                         },
                         new
                         {
                             EmployeeID = 4,
                             Email = "dana@shop.com",
                             FullName = "Dana White",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0104",
-                            Role = "Saler",
-                            Username = "dana"
+                            Role = "Cashier",
+                            Username = "cashier_dana"
                         },
                         new
                         {
                             EmployeeID = 5,
                             Email = "eve@shop.com",
                             FullName = "Eve Davis",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0105",
-                            Role = "Purchaser",
-                            Username = "eve"
+                            Role = "Stocker",
+                            Username = "stocker_eve"
                         },
                         new
                         {
                             EmployeeID = 6,
                             Email = "frank@shop.com",
                             FullName = "Frank Miller",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0106",
-                            Role = "Administrator",
-                            Username = "frank"
+                            Role = "Admin",
+                            Username = "admin_frank"
                         },
                         new
                         {
                             EmployeeID = 7,
                             Email = "grace@shop.com",
                             FullName = "Grace Lee",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0107",
-                            Role = "Saler",
-                            Username = "grace"
+                            Role = "Cashier",
+                            Username = "cashier_grace"
                         },
                         new
                         {
                             EmployeeID = 8,
                             Email = "heidi@shop.com",
                             FullName = "Heidi Chen",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0108",
-                            Role = "Saler",
-                            Username = "heidi"
+                            Role = "Cashier",
+                            Username = "cashier_heidi"
                         },
                         new
                         {
                             EmployeeID = 9,
                             Email = "ivan@shop.com",
                             FullName = "Ivan Garcia",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0109",
-                            Role = "HR",
-                            Username = "ivan"
+                            Role = "Stocker",
+                            Username = "stocker_ivan"
                         },
                         new
                         {
                             EmployeeID = 10,
                             Email = "judy@shop.com",
                             FullName = "Judy Kim",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAJuJHqDq4wmR+C7aqW3Sc3p89dA+NIQ5VTFmslz+d9GNtVZ9/XlXGOdQJLlQLpX2A==",
                             Phone = "555-0110",
-                            Role = "Purchaser",
-                            Username = "judy"
+                            Role = "Stocker",
+                            Username = "stocker_judy"
                         });
                 });
 
