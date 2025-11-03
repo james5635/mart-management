@@ -90,6 +90,7 @@
             // 
             // DgvProduct
             // 
+            DgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvProduct.Location = new Point(235, 71);
             DgvProduct.Name = "DgvProduct";

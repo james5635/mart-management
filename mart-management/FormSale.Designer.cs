@@ -99,6 +99,7 @@
             // 
             // DgvSale
             // 
+            DgvSale.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvSale.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvSale.Location = new Point(286, 65);
             DgvSale.Name = "DgvSale";

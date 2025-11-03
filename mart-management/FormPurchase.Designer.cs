@@ -248,6 +248,7 @@
             // 
             // DgvPurchase
             // 
+            DgvPurchase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvPurchase.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPurchase.Location = new Point(283, 52);
             DgvPurchase.Name = "DgvPurchase";

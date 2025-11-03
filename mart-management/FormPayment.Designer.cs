@@ -82,6 +82,7 @@
             // 
             // DgvPayment
             // 
+            DgvPayment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvPayment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPayment.Location = new Point(300, 60);
             DgvPayment.Name = "DgvPayment";

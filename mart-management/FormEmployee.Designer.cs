@@ -201,6 +201,7 @@
             // 
             // DgvEmployee
             // 
+            DgvEmployee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvEmployee.Location = new Point(238, 71);
             DgvEmployee.Name = "DgvEmployee";

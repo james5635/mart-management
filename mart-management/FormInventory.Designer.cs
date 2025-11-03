@@ -80,6 +80,7 @@
             // 
             // DgvInventory
             // 
+            DgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvInventory.Location = new Point(269, 39);
             DgvInventory.Name = "DgvInventory";

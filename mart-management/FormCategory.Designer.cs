@@ -47,7 +47,7 @@
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDelete.Location = new Point(627, 302);
+            BtnDelete.Location = new Point(675, 293);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 36);
             BtnDelete.TabIndex = 65;
@@ -58,7 +58,7 @@
             // BtnEdit
             // 
             BtnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnEdit.Location = new Point(531, 302);
+            BtnEdit.Location = new Point(579, 293);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(75, 36);
             BtnEdit.TabIndex = 64;
@@ -78,10 +78,11 @@
             // 
             // DgvCategory
             // 
+            DgvCategory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DgvCategory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvCategory.Location = new Point(276, 40);
             DgvCategory.Name = "DgvCategory";
-            DgvCategory.Size = new Size(426, 235);
+            DgvCategory.Size = new Size(474, 235);
             DgvCategory.TabIndex = 62;
             // 
             // BtnSubmit
@@ -159,7 +160,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(718, 356);
+            ClientSize = new Size(768, 356);
             Controls.Add(BtnDelete);
             Controls.Add(BtnEdit);
             Controls.Add(LblCategory);
