@@ -64,8 +64,14 @@ namespace mart_management
 
         private void CboProductID_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
             TxtProductName.Text = CboProductID.SelectedValue.ToString();
+
+            using var db = new MartManagementContext();
+            var product = db.Products.FirstOrDefault(p => p.ProductID == int.Parse(CboProductID.Text));
+            if (product != null)
+            {
+                TxtUnitPrice.Text = product.UnitPrice.ToString("F2");
+            }
         }
 
         private void TxtQuantity_TextChanged(object sender, EventArgs e)
@@ -224,24 +230,6 @@ namespace mart_management
                     product.SubItems.Add(sd.Subtotal.ToString("F2"));
                     LvProduct.Items.Add(product);
                 }
-
-
-
-
-
-                //var products = db.SaleDetails
-                //    .Include(sd => sd.Sale)
-                //    .Include(sd => sd.Product)
-                //    .Where(sd => sd.SaleID == sale.SaleID)
-                //    .ToList().Select(sd => new
-                //    {
-                //        sd.ProductID,
-                //        sd.Product.ProductName,
-                //        sd.Quantity,
-                //        sd.UnitPrice,
-                //        sd.Subtotal
-                //    }).ToList();
-
 
                 _currentSale = sale;
                 _currentSaleDetails = saleDetails;

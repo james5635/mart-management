@@ -110,6 +110,7 @@
             TxtUnitCost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtUnitCost.Location = new Point(589, 367);
             TxtUnitCost.Name = "TxtUnitCost";
+            TxtUnitCost.ReadOnly = true;
             TxtUnitCost.Size = new Size(111, 29);
             TxtUnitCost.TabIndex = 94;
             TxtUnitCost.TextChanged += TxtUnitCost_TextChanged;

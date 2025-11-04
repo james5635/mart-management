@@ -64,6 +64,13 @@ namespace mart_management
         private void CboProductID_SelectionChangeCommitted(object sender, EventArgs e)
         {
             TxtProductName.Text = CboProductID.SelectedValue.ToString();
+
+            using var db = new MartManagementContext();
+            var product = db.Products.FirstOrDefault(p => p.ProductID == int.Parse(CboProductID.Text));
+            if (product != null)
+            {
+                TxtUnitCost.Text = product.CostPrice.ToString("F2");
+            }
         }
 
         private void TxtQuantity_TextChanged(object sender, EventArgs e)

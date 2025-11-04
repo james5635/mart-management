@@ -303,6 +303,7 @@
             TxtUnitPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtUnitPrice.Location = new Point(659, 409);
             TxtUnitPrice.Name = "TxtUnitPrice";
+            TxtUnitPrice.ReadOnly = true;
             TxtUnitPrice.Size = new Size(131, 29);
             TxtUnitPrice.TabIndex = 65;
             TxtUnitPrice.TextChanged += TxtUnitPrice_TextChanged;
