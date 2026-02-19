@@ -29,7 +29,7 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             db.Add(new Category
             {
@@ -45,7 +45,7 @@ namespace mart_management
         }
         private void ReadCategory()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var categories = db.Categories.ToList().Select(c => new
             {
                 c.CategoryID,
@@ -57,7 +57,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvCategory.CurrentRow;
             if (selectedRow != null)
             {
@@ -80,7 +80,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentCategory.CategoryName = TxtCategoryName.Text;
             _currentCategory.Description = TxtDescription.Text;
@@ -97,7 +97,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvCategory.CurrentRow;
             if (selectedRow != null)
             {

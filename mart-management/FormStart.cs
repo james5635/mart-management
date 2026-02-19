@@ -61,5 +61,11 @@ namespace mart_management
         {
             new FormPurchase().Show();
         }
+
+        // COMPOSITE PATTERN: Open the hierarchical sales report
+        private void BtnReport_Click(object sender, EventArgs e)
+        {
+            new FormReport().Show();
+        }
     }
 }

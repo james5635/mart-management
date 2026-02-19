@@ -33,7 +33,7 @@ namespace mart_management
         }
         private void ReadProductId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var inventories = db.Inventories.ToList();
             var products = db.Products
                 .Where(p => !db.Inventories.Any(i => i.ProductID == p.ProductID))
@@ -53,7 +53,7 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             db.Add(new Inventory
             {
@@ -71,7 +71,7 @@ namespace mart_management
         }
         private void ReadInventory()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var inventories = db.Inventories.Include(i => i.Product)
                 .ToList().Select(i => new
                 {
@@ -89,7 +89,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvInventory.CurrentRow;
             if (selectedRow != null)
             {
@@ -125,7 +125,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentInventory.ProductID = int.Parse(CboProductID.Text);
             _currentInventory.QuantityInStock = int.Parse(TxtQuantityInStock.Text);
@@ -143,7 +143,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvInventory.CurrentRow;
             if (selectedRow != null)
             {

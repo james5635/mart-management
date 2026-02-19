@@ -34,7 +34,7 @@ namespace mart_management
 
         private void ReadSaleId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var sales = db.Sales.Select(s => new
             {
                 s.SaleID
@@ -48,7 +48,7 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             db.Add(new Payment
             {
@@ -67,7 +67,7 @@ namespace mart_management
 
         private void ReadPayment()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var payments = db.Payments.ToList().Select(p => new
             {
                 p.PaymentID,
@@ -81,7 +81,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvPayment.CurrentRow;
             if (selectedRow != null)
             {
@@ -106,7 +106,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentPayment.SaleID = int.Parse(CboSaleID.Text);
             _currentPayment.PaymentDate = DtpPaymentDate.Value;
@@ -125,7 +125,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvPayment.CurrentRow;
             if (selectedRow != null)
             {

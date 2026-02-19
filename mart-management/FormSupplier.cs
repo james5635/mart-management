@@ -30,7 +30,7 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             db.Add(new Supplier
             {
@@ -50,7 +50,7 @@ namespace mart_management
         }
         private void ReadSupplier()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var suppliers = db.Suppliers.ToList().Select(s => new
             {
                 s.SupplierID,
@@ -65,7 +65,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvSupplier.CurrentRow;
             if (selectedRow != null)
             {
@@ -91,7 +91,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentSupplier.SupplierName = TxtSupplierName.Text;
             _currentSupplier.ContactPerson = TxtContactPerson.Text;
@@ -111,7 +111,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvSupplier.CurrentRow;
             if (selectedRow != null)
             {

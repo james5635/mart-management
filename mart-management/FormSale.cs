@@ -12,11 +12,24 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace mart_management
 {
+    /// <summary>
+    /// FormSale integrates three design patterns:
+    /// - STATE PATTERN: OrderContext manages sale lifecycle (Draft → Confirmed → Completed/Cancelled)
+    /// - STRATEGY PATTERN: PaymentProcessor with selectable IPaymentStrategy (Cash/Card/Transfer)
+    /// - DECORATOR PATTERN: IProductPricing with TaxDecorator/DiscountDecorator for price adjustments
+    /// - SINGLETON PATTERN: DatabaseManager.Instance for database access
+    /// </summary>
     public partial class FormSale : Form
     {
         private Sale? _currentSale;
         private List<SaleDetail> _currentSaleDetails;
         private ListViewItem _currentLvProductItem;
+
+        // === STATE PATTERN === 
+        private OrderContext _orderContext = new OrderContext();
+
+        // === STRATEGY PATTERN ===
+        private PaymentProcessor _paymentProcessor = new PaymentProcessor();
 
         public FormSale()
         {
@@ -25,11 +38,100 @@ namespace mart_management
             ReadCustomerId();
             ReadProductId();
             ReadSale();
+            InitializePaymentStrategies(); // Strategy Pattern
+            UpdateStateDisplay();          // State Pattern
         }
 
+        // =============================================
+        // STRATEGY PATTERN: Initialize payment methods
+        // =============================================
+        private void InitializePaymentStrategies()
+        {
+            var strategies = new List<IPaymentStrategy>
+            {
+                new CashPayment(),
+                new CardPayment(),
+                new TransferPayment()
+            };
+            CboPaymentMethod.DataSource = strategies;
+            CboPaymentMethod.DisplayMember = "MethodName";
+            CboPaymentMethod.Text = null;
+        }
+
+        private void CboPaymentMethod_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (CboPaymentMethod.SelectedItem is IPaymentStrategy strategy)
+            {
+                _paymentProcessor.SetStrategy(strategy);
+            }
+        }
+
+        // =============================================
+        // STATE PATTERN: Update state label display
+        // =============================================
+        private void UpdateStateDisplay()
+        {
+            LblStateValue.Text = _orderContext.CurrentState.StateName;
+
+            // Color-code the state
+            switch (_orderContext.CurrentState.StateName)
+            {
+                case "Draft":
+                    LblStateValue.ForeColor = Color.DarkGreen;
+                    break;
+                case "Confirmed":
+                    LblStateValue.ForeColor = Color.DarkOrange;
+                    break;
+                case "Completed":
+                    LblStateValue.ForeColor = Color.Blue;
+                    break;
+                case "Cancelled":
+                    LblStateValue.ForeColor = Color.Red;
+                    break;
+            }
+        }
+
+        private void BtnConfirm_Click(object sender, EventArgs e)
+        {
+            _orderContext.Confirm();
+            UpdateStateDisplay();
+        }
+
+        private void BtnComplete_Click(object sender, EventArgs e)
+        {
+            _orderContext.Complete();
+            UpdateStateDisplay();
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            _orderContext.Cancel();
+            UpdateStateDisplay();
+        }
+
+        // =============================================
+        // DECORATOR PATTERN: Apply pricing decorators
+        // =============================================
+        private double GetDecoratedPrice(double basePrice)
+        {
+            // Wrap base price with decorators
+            IProductPricing pricing = new BaseProductPricing(basePrice);
+            pricing = new TaxDecorator(pricing, 10);       // 10% tax
+            pricing = new DiscountDecorator(pricing, 5);    // 5% discount
+
+            // Display decorator description
+            LblPriceInfo.Text = pricing.GetDescription();
+
+            return pricing.GetPrice();
+        }
+
+        // =============================================
+        // EXISTING LOGIC (uses Singleton + patterns)
+        // =============================================
         private void ReadCustomerId()
         {
-            using var db = new MartManagementContext();
+            // SINGLETON PATTERN: Use DatabaseManager instead of `new MartManagementContext()`
+            using var db = DatabaseManager.Instance.CreateContext();
             var customers = db.Customers.Select(c => new
             {
                 c.CustomerID,
@@ -45,7 +147,7 @@ namespace mart_management
 
         private void ReadProductId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var products = db.Products.Select(p => new
             {
                 p.ProductID,
@@ -66,11 +168,13 @@ namespace mart_management
         {
             TxtProductName.Text = CboProductID.SelectedValue.ToString();
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var product = db.Products.FirstOrDefault(p => p.ProductID == int.Parse(CboProductID.Text));
             if (product != null)
             {
-                TxtUnitPrice.Text = product.UnitPrice.ToString("F2");
+                // DECORATOR PATTERN: Apply tax + discount decorators to unit price
+                double decoratedPrice = GetDecoratedPrice(product.UnitPrice);
+                TxtUnitPrice.Text = decoratedPrice.ToString("F2");
             }
         }
 
@@ -98,21 +202,33 @@ namespace mart_management
             CboCustomerID.Text = null;
             TxtCustomerName.Clear();
             DtpSaleDate.Value = DateTime.Now;
-            TxtPaymentMethod.Clear();
+            CboPaymentMethod.Text = null;
 
             CboProductID.Text = null;
             TxtProductName.Clear();
             TxtQuantity.Clear();
             TxtUnitPrice.Clear();
             TxtSubtotal.Clear();
+            LblPriceInfo.Text = "";
 
             LvProduct.Columns.Clear();
             LvProduct.Items.Clear();
+
+            // Reset State Pattern
+            _orderContext = new OrderContext();
+            _paymentProcessor = new PaymentProcessor();
+            UpdateStateDisplay();
         }
 
 
         private void BtnAddProduct_Click(object sender, EventArgs e)
         {
+            // STATE PATTERN: Check if adding items is allowed in the current state
+            _orderContext.AddItem();
+            if (_orderContext.CurrentState.StateName != "Draft")
+            {
+                return; // State machine rejected the action
+            }
 
             if (LvProduct.Columns.Count == 0)
             {
@@ -137,17 +253,40 @@ namespace mart_management
             TxtQuantity.Clear();
             TxtUnitPrice.Clear();
             TxtSubtotal.Clear();
+            LblPriceInfo.Text = "";
         }
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            // STATE PATTERN: Only allow submit when confirmed
+            if (_orderContext.CurrentState.StateName != "Confirmed")
+            {
+                MessageBox.Show("Please confirm the order before submitting. Current state: " + _orderContext.CurrentState.StateName,
+                    "State Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // STRATEGY PATTERN: Process payment using selected strategy
+            if (CboPaymentMethod.SelectedItem is IPaymentStrategy strategy)
+            {
+                _paymentProcessor.SetStrategy(strategy);
+            }
+
+            double totalAmount = LvProduct.Items.Cast<ListViewItem>().Sum(item => double.Parse(item.SubItems[4].Text));
+            if (!_paymentProcessor.Process(totalAmount))
+            {
+                return; // Payment failed
+            }
+
+            using var db = DatabaseManager.Instance.CreateContext();
+
+            string paymentMethodName = _paymentProcessor.GetStrategy()?.MethodName ?? "Cash";
 
             var sale = db.Add(new Sale
             {
                 CustomerID = int.Parse(CboCustomerID.Text),
                 SaleDate = DtpSaleDate.Value,
-                TotalAmount = LvProduct.Items.Cast<ListViewItem>().Sum(item => double.Parse(item.SubItems[4].Text)),
-                PaymentMethod = TxtPaymentMethod.Text,
+                TotalAmount = totalAmount,
+                PaymentMethod = paymentMethodName,
             });
             await db.SaveChangesAsync();
 
@@ -164,13 +303,20 @@ namespace mart_management
             }
             await db.SaveChangesAsync();
 
-            MessageBox.Show("Sale Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // STATE PATTERN: Complete the order
+            _orderContext.Complete();
+            UpdateStateDisplay();
+
+            // STRATEGY PATTERN: Show receipt
+            string receipt = _paymentProcessor.GetReceipt(totalAmount);
+            MessageBox.Show(receipt, "Sale Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             BtnClear_Click(null!, null!);
             ReadSale();
         }
         private void ReadSale()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var sales = db.Sales
                 .Include(s => s.Customer) // 👈 load related Customer
                 .Select(s => new
@@ -189,7 +335,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvSale.CurrentRow;
             if (selectedRow != null)
             {
@@ -201,7 +347,17 @@ namespace mart_management
                     CboCustomerID.Text = sale.CustomerID.ToString();
                     TxtCustomerName.Text = sale.Customer.CustomerName;
                     DtpSaleDate.Value = sale.SaleDate;
-                    TxtPaymentMethod.Text = sale.PaymentMethod;
+
+                    // Strategy Pattern: Set the payment method ComboBox
+                    for (int i = 0; i < CboPaymentMethod.Items.Count; i++)
+                    {
+                        if (CboPaymentMethod.Items[i] is IPaymentStrategy s && s.MethodName == sale.PaymentMethod)
+                        {
+                            CboPaymentMethod.SelectedIndex = i;
+                            _paymentProcessor.SetStrategy(s);
+                            break;
+                        }
+                    }
                 }
 
                 // Load SaleDetails for the selected Sale
@@ -233,6 +389,10 @@ namespace mart_management
 
                 _currentSale = sale;
                 _currentSaleDetails = saleDetails;
+
+                // State Pattern: Reset to Draft for editing
+                _orderContext = new OrderContext();
+                UpdateStateDisplay();
             }
         }
 
@@ -244,14 +404,16 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentSale.Customer = null; // clear tracked navigation
+
+            string paymentMethodName = _paymentProcessor.GetStrategy()?.MethodName ?? "Cash";
 
             _currentSale.CustomerID = int.Parse(CboCustomerID.Text);
             _currentSale.SaleDate = DtpSaleDate.Value;
             _currentSale.TotalAmount = LvProduct.Items.Cast<ListViewItem>().Sum(item => double.Parse(item.SubItems[4].Text));
-            _currentSale.PaymentMethod = TxtPaymentMethod.Text;
+            _currentSale.PaymentMethod = paymentMethodName;
             db.Sales.Update(_currentSale);
             await db.SaveChangesAsync();
 
@@ -282,7 +444,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvSale.CurrentRow;
             if (selectedRow != null)
             {
@@ -366,7 +528,7 @@ namespace mart_management
 
         private void BtnDetail_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvSale.CurrentRow;
             if (selectedRow != null)
             {

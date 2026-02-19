@@ -138,11 +138,24 @@
             BtnPurchase.UseVisualStyleBackColor = true;
             BtnPurchase.Click += BtnPurchase_Click;
             // 
+            // BtnReport (Composite Pattern)
+            // 
+            BtnReport = new Button();
+            BtnReport.Font = new Font("Segoe UI", 12F);
+            BtnReport.Location = new Point(12, 390);
+            BtnReport.Name = "BtnReport";
+            BtnReport.Size = new Size(288, 36);
+            BtnReport.TabIndex = 9;
+            BtnReport.Text = "Report (Composite)";
+            BtnReport.UseVisualStyleBackColor = true;
+            BtnReport.Click += BtnReport_Click;
+            // 
             // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(312, 450);
+            ClientSize = new Size(312, 500);
+            Controls.Add(BtnReport);
             Controls.Add(BtnPurchase);
             Controls.Add(BtnProduct);
             Controls.Add(BtnInventory);
@@ -168,5 +181,6 @@
         public Button BtnInventory;
         public Button BtnProduct;
         public Button BtnPurchase;
+        public Button BtnReport;
     }
 }

@@ -29,7 +29,7 @@ namespace mart_management
 
         private void ReadSupplierId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var suppliers = db.Suppliers.Select(s => new
             {
                 s.SupplierID,
@@ -43,7 +43,7 @@ namespace mart_management
         }
         private void ReadProductId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var products = db.Products.Select(p => new
             {
                 p.ProductID,
@@ -65,7 +65,7 @@ namespace mart_management
         {
             TxtProductName.Text = CboProductID.SelectedValue.ToString();
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var product = db.Products.FirstOrDefault(p => p.ProductID == int.Parse(CboProductID.Text));
             if (product != null)
             {
@@ -137,7 +137,7 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             var purchase = db.Add(new Purchase
             {
@@ -167,7 +167,7 @@ namespace mart_management
 
         private void ReadPurchase()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var purchases = db.Purchases
                 .Include(p => p.Supplier) // 👈 load related Customer
                 .Select(p => new
@@ -184,7 +184,7 @@ namespace mart_management
         private void BtnEdit_Click(object sender, EventArgs e)
         {
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvPurchase.CurrentRow;
             if (selectedRow != null)
             {
@@ -238,7 +238,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentPurchase.Supplier = null; // clear tracked navigation
 
@@ -275,7 +275,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvPurchase.CurrentRow;
             if (selectedRow != null)
             {
@@ -357,7 +357,7 @@ namespace mart_management
 
         private void BtnDetail_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvPurchase.CurrentRow;
             if (selectedRow != null)
             {

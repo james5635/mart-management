@@ -36,7 +36,7 @@
             BtnSubmit = new Button();
             BtnUpdate = new Button();
             BtnClear = new Button();
-            TxtPaymentMethod = new TextBox();
+            CboPaymentMethod = new ComboBox();
             TxtCustomerName = new TextBox();
             LblSaleDate = new Label();
             LblCustomerName = new Label();
@@ -62,8 +62,35 @@
             BtnEditProduct = new Button();
             BtnDeleteProduct = new Button();
             BtnUpdateProduct = new Button();
+            LblState = new Label();
+            LblStateValue = new Label();
+            BtnConfirm = new Button();
+            BtnComplete = new Button();
+            BtnCancel = new Button();
+            LblPriceInfo = new Label();
             ((System.ComponentModel.ISupportInitialize)DgvSale).BeginInit();
             SuspendLayout();
+            // 
+            // LblState (State Pattern)
+            // 
+            LblState.AutoSize = true;
+            LblState.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            LblState.Location = new Point(140, 15);
+            LblState.Name = "LblState";
+            LblState.Size = new Size(53, 21);
+            LblState.TabIndex = 80;
+            LblState.Text = "State:";
+            // 
+            // LblStateValue (State Pattern)
+            // 
+            LblStateValue.AutoSize = true;
+            LblStateValue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            LblStateValue.ForeColor = Color.DarkGreen;
+            LblStateValue.Location = new Point(196, 15);
+            LblStateValue.Name = "LblStateValue";
+            LblStateValue.Size = new Size(50, 21);
+            LblStateValue.TabIndex = 81;
+            LblStateValue.Text = "Draft";
             // 
             // BtnDelete
             // 
@@ -109,7 +136,7 @@
             // BtnSubmit
             // 
             BtnSubmit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnSubmit.Location = new Point(204, 692);
+            BtnSubmit.Location = new Point(204, 740);
             BtnSubmit.Name = "BtnSubmit";
             BtnSubmit.Size = new Size(75, 36);
             BtnSubmit.TabIndex = 48;
@@ -120,7 +147,7 @@
             // BtnUpdate
             // 
             BtnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnUpdate.Location = new Point(108, 692);
+            BtnUpdate.Location = new Point(108, 740);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(75, 36);
             BtnUpdate.TabIndex = 47;
@@ -131,7 +158,7 @@
             // BtnClear
             // 
             BtnClear.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnClear.Location = new Point(9, 692);
+            BtnClear.Location = new Point(9, 740);
             BtnClear.Name = "BtnClear";
             BtnClear.Size = new Size(75, 36);
             BtnClear.TabIndex = 46;
@@ -139,14 +166,49 @@
             BtnClear.UseVisualStyleBackColor = true;
             BtnClear.Click += BtnClear_Click;
             // 
-            // TxtPaymentMethod
+            // BtnConfirm (State Pattern)
             // 
-            TxtPaymentMethod.BorderStyle = BorderStyle.FixedSingle;
-            TxtPaymentMethod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtPaymentMethod.Location = new Point(14, 290);
-            TxtPaymentMethod.Name = "TxtPaymentMethod";
-            TxtPaymentMethod.Size = new Size(207, 29);
-            TxtPaymentMethod.TabIndex = 45;
+            BtnConfirm.Font = new Font("Segoe UI", 11F);
+            BtnConfirm.Location = new Point(9, 692);
+            BtnConfirm.Name = "BtnConfirm";
+            BtnConfirm.Size = new Size(85, 36);
+            BtnConfirm.TabIndex = 82;
+            BtnConfirm.Text = "Confirm";
+            BtnConfirm.UseVisualStyleBackColor = true;
+            BtnConfirm.Click += BtnConfirm_Click;
+            // 
+            // BtnComplete (State Pattern)
+            // 
+            BtnComplete.Font = new Font("Segoe UI", 11F);
+            BtnComplete.Location = new Point(100, 692);
+            BtnComplete.Name = "BtnComplete";
+            BtnComplete.Size = new Size(95, 36);
+            BtnComplete.TabIndex = 83;
+            BtnComplete.Text = "Complete";
+            BtnComplete.UseVisualStyleBackColor = true;
+            BtnComplete.Click += BtnComplete_Click;
+            // 
+            // BtnCancel (State Pattern)
+            // 
+            BtnCancel.Font = new Font("Segoe UI", 11F);
+            BtnCancel.Location = new Point(201, 692);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(78, 36);
+            BtnCancel.TabIndex = 84;
+            BtnCancel.Text = "Cancel";
+            BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
+            // 
+            // CboPaymentMethod (Strategy Pattern — replaces TxtPaymentMethod)
+            // 
+            CboPaymentMethod.Font = new Font("Segoe UI", 12F);
+            CboPaymentMethod.FormattingEnabled = true;
+            CboPaymentMethod.Location = new Point(14, 290);
+            CboPaymentMethod.Name = "CboPaymentMethod";
+            CboPaymentMethod.Size = new Size(207, 29);
+            CboPaymentMethod.TabIndex = 45;
+            CboPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
+            CboPaymentMethod.SelectionChangeCommitted += CboPaymentMethod_SelectionChangeCommitted;
             // 
             // TxtCustomerName
             // 
@@ -194,9 +256,9 @@
             LblPaymentMethod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LblPaymentMethod.Location = new Point(14, 262);
             LblPaymentMethod.Name = "LblPaymentMethod";
-            LblPaymentMethod.Size = new Size(124, 21);
+            LblPaymentMethod.Size = new Size(155, 21);
             LblPaymentMethod.TabIndex = 44;
-            LblPaymentMethod.Text = "PaymentMethod";
+            LblPaymentMethod.Text = "Payment (Strategy)";
             // 
             // LblCustomerID
             // 
@@ -338,6 +400,17 @@
             LblSubtotal.TabIndex = 66;
             LblSubtotal.Text = "Subtotal";
             // 
+            // LblPriceInfo (Decorator Pattern)
+            // 
+            LblPriceInfo.AutoSize = true;
+            LblPriceInfo.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            LblPriceInfo.ForeColor = Color.DarkBlue;
+            LblPriceInfo.Location = new Point(659, 443);
+            LblPriceInfo.Name = "LblPriceInfo";
+            LblPriceInfo.Size = new Size(0, 15);
+            LblPriceInfo.TabIndex = 85;
+            LblPriceInfo.Text = "";
+            // 
             // LvProduct
             // 
             LvProduct.FullRowSelect = true;
@@ -397,7 +470,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(972, 738);
+            ClientSize = new Size(972, 788);
+            Controls.Add(LblPriceInfo);
+            Controls.Add(BtnCancel);
+            Controls.Add(BtnComplete);
+            Controls.Add(BtnConfirm);
+            Controls.Add(LblStateValue);
+            Controls.Add(LblState);
             Controls.Add(BtnUpdateProduct);
             Controls.Add(BtnDeleteProduct);
             Controls.Add(BtnEditProduct);
@@ -423,7 +502,7 @@
             Controls.Add(BtnSubmit);
             Controls.Add(BtnUpdate);
             Controls.Add(BtnClear);
-            Controls.Add(TxtPaymentMethod);
+            Controls.Add(CboPaymentMethod);
             Controls.Add(TxtCustomerName);
             Controls.Add(LblSaleDate);
             Controls.Add(LblCustomerName);
@@ -446,7 +525,7 @@
         private Button BtnSubmit;
         private Button BtnUpdate;
         private Button BtnClear;
-        private TextBox TxtPaymentMethod;
+        private ComboBox CboPaymentMethod;
         private TextBox TxtCustomerName;
         private Label LblSaleDate;
         private Label LblCustomerName;
@@ -472,5 +551,11 @@
         private Button BtnEditProduct;
         private Button BtnDeleteProduct;
         private Button BtnUpdateProduct;
+        private Label LblState;
+        private Label LblStateValue;
+        private Button BtnConfirm;
+        private Button BtnComplete;
+        private Button BtnCancel;
+        private Label LblPriceInfo;
     }
 }

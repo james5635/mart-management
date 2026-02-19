@@ -34,7 +34,7 @@ namespace mart_management
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             string employeeID = TxtEmployeeID.Text.Trim();
             string username = TxtUsername.Text.Trim();
             string password = TxtPassword.Text.Trim();

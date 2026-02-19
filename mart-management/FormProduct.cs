@@ -37,7 +37,7 @@ namespace mart_management
         }
         private void ReadCategoryId()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var categories = db.Categories.Select(c => new
             {
                 c.CategoryID,
@@ -57,19 +57,20 @@ namespace mart_management
 
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {
+            // SINGLETON PATTERN: Use DatabaseManager
+            using var db = DatabaseManager.Instance.CreateContext();
 
-            using var db = new MartManagementContext();
+            // BUILDER PATTERN: Construct product step-by-step
+            var product = new ProductBuilder()
+                .SetName(TxtProductName.Text)
+                .SetCategory(int.Parse(CboCategoryID.Text))
+                .SetPricing(double.Parse(TxtUnitPrice.Text), double.Parse(TxtCostPrice.Text))
+                .SetUnit(TxtUnit.Text)
+                .SetReorderLevel(int.Parse(TxtReorderLevel.Text))
+                .SetStatus(TxtStatus.Text)
+                .Build();
 
-            db.Add(new Product
-            {
-                ProductName = TxtProductName.Text,
-                CategoryID = int.Parse(CboCategoryID.Text),
-                UnitPrice = double.Parse(TxtUnitPrice.Text),
-                CostPrice = double.Parse(TxtCostPrice.Text),
-                Unit = TxtUnit.Text,
-                ReorderLevel = int.Parse(TxtReorderLevel.Text),
-                Status = TxtStatus.Text
-            });
+            db.Add(product);
             await db.SaveChangesAsync();
             MessageBox.Show("Product Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -81,7 +82,7 @@ namespace mart_management
 
         private void ReadProduct()
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var products = db.Products.Include(p => p.Category).ToList().Select(p => new
             {
                 p.ProductID,
@@ -99,7 +100,7 @@ namespace mart_management
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvProduct.CurrentRow;
             if (selectedRow != null)
             {
@@ -130,7 +131,7 @@ namespace mart_management
                 return;
             }
 
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
 
             _currentProduct.ProductName = TxtProductName.Text;
             _currentProduct.CategoryID = int.Parse(CboCategoryID.Text);
@@ -153,7 +154,7 @@ namespace mart_management
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            using var db = new MartManagementContext();
+            using var db = DatabaseManager.Instance.CreateContext();
             var selectedRow = DgvProduct.CurrentRow;
             if (selectedRow != null)
             {
