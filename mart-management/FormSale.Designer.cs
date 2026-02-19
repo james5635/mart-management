@@ -71,27 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)DgvSale).BeginInit();
             SuspendLayout();
             // 
-            // LblState (State Pattern)
-            // 
-            LblState.AutoSize = true;
-            LblState.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            LblState.Location = new Point(140, 15);
-            LblState.Name = "LblState";
-            LblState.Size = new Size(53, 21);
-            LblState.TabIndex = 80;
-            LblState.Text = "State:";
-            // 
-            // LblStateValue (State Pattern)
-            // 
-            LblStateValue.AutoSize = true;
-            LblStateValue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            LblStateValue.ForeColor = Color.DarkGreen;
-            LblStateValue.Location = new Point(196, 15);
-            LblStateValue.Name = "LblStateValue";
-            LblStateValue.Size = new Size(50, 21);
-            LblStateValue.TabIndex = 81;
-            LblStateValue.Text = "Draft";
-            // 
             // BtnDelete
             // 
             BtnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -136,7 +115,7 @@
             // BtnSubmit
             // 
             BtnSubmit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnSubmit.Location = new Point(204, 740);
+            BtnSubmit.Location = new Point(736, 692);
             BtnSubmit.Name = "BtnSubmit";
             BtnSubmit.Size = new Size(75, 36);
             BtnSubmit.TabIndex = 48;
@@ -147,7 +126,7 @@
             // BtnUpdate
             // 
             BtnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnUpdate.Location = new Point(108, 740);
+            BtnUpdate.Location = new Point(640, 692);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(75, 36);
             BtnUpdate.TabIndex = 47;
@@ -158,7 +137,7 @@
             // BtnClear
             // 
             BtnClear.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnClear.Location = new Point(9, 740);
+            BtnClear.Location = new Point(541, 692);
             BtnClear.Name = "BtnClear";
             BtnClear.Size = new Size(75, 36);
             BtnClear.TabIndex = 46;
@@ -166,48 +145,15 @@
             BtnClear.UseVisualStyleBackColor = true;
             BtnClear.Click += BtnClear_Click;
             // 
-            // BtnConfirm (State Pattern)
+            // CboPaymentMethod
             // 
-            BtnConfirm.Font = new Font("Segoe UI", 11F);
-            BtnConfirm.Location = new Point(9, 692);
-            BtnConfirm.Name = "BtnConfirm";
-            BtnConfirm.Size = new Size(85, 36);
-            BtnConfirm.TabIndex = 82;
-            BtnConfirm.Text = "Confirm";
-            BtnConfirm.UseVisualStyleBackColor = true;
-            BtnConfirm.Click += BtnConfirm_Click;
-            // 
-            // BtnComplete (State Pattern)
-            // 
-            BtnComplete.Font = new Font("Segoe UI", 11F);
-            BtnComplete.Location = new Point(100, 692);
-            BtnComplete.Name = "BtnComplete";
-            BtnComplete.Size = new Size(95, 36);
-            BtnComplete.TabIndex = 83;
-            BtnComplete.Text = "Complete";
-            BtnComplete.UseVisualStyleBackColor = true;
-            BtnComplete.Click += BtnComplete_Click;
-            // 
-            // BtnCancel (State Pattern)
-            // 
-            BtnCancel.Font = new Font("Segoe UI", 11F);
-            BtnCancel.Location = new Point(201, 692);
-            BtnCancel.Name = "BtnCancel";
-            BtnCancel.Size = new Size(78, 36);
-            BtnCancel.TabIndex = 84;
-            BtnCancel.Text = "Cancel";
-            BtnCancel.UseVisualStyleBackColor = true;
-            BtnCancel.Click += BtnCancel_Click;
-            // 
-            // CboPaymentMethod (Strategy Pattern — replaces TxtPaymentMethod)
-            // 
+            CboPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
             CboPaymentMethod.Font = new Font("Segoe UI", 12F);
             CboPaymentMethod.FormattingEnabled = true;
             CboPaymentMethod.Location = new Point(14, 290);
             CboPaymentMethod.Name = "CboPaymentMethod";
             CboPaymentMethod.Size = new Size(207, 29);
             CboPaymentMethod.TabIndex = 45;
-            CboPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
             CboPaymentMethod.SelectionChangeCommitted += CboPaymentMethod_SelectionChangeCommitted;
             // 
             // TxtCustomerName
@@ -256,9 +202,9 @@
             LblPaymentMethod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LblPaymentMethod.Location = new Point(14, 262);
             LblPaymentMethod.Name = "LblPaymentMethod";
-            LblPaymentMethod.Size = new Size(155, 21);
+            LblPaymentMethod.Size = new Size(70, 21);
             LblPaymentMethod.TabIndex = 44;
-            LblPaymentMethod.Text = "Payment (Strategy)";
+            LblPaymentMethod.Text = "Payment";
             // 
             // LblCustomerID
             // 
@@ -400,17 +346,6 @@
             LblSubtotal.TabIndex = 66;
             LblSubtotal.Text = "Subtotal";
             // 
-            // LblPriceInfo (Decorator Pattern)
-            // 
-            LblPriceInfo.AutoSize = true;
-            LblPriceInfo.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
-            LblPriceInfo.ForeColor = Color.DarkBlue;
-            LblPriceInfo.Location = new Point(659, 443);
-            LblPriceInfo.Name = "LblPriceInfo";
-            LblPriceInfo.Size = new Size(0, 15);
-            LblPriceInfo.TabIndex = 85;
-            LblPriceInfo.Text = "";
-            // 
             // LvProduct
             // 
             LvProduct.FullRowSelect = true;
@@ -466,11 +401,75 @@
             BtnUpdateProduct.UseVisualStyleBackColor = true;
             BtnUpdateProduct.Click += BtnUpdateProduct_Click;
             // 
+            // LblState
+            // 
+            LblState.AutoSize = true;
+            LblState.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            LblState.Location = new Point(781, 18);
+            LblState.Name = "LblState";
+            LblState.Size = new Size(53, 21);
+            LblState.TabIndex = 80;
+            LblState.Text = "State:";
+            // 
+            // LblStateValue
+            // 
+            LblStateValue.AutoSize = true;
+            LblStateValue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            LblStateValue.ForeColor = Color.DarkGreen;
+            LblStateValue.Location = new Point(837, 18);
+            LblStateValue.Name = "LblStateValue";
+            LblStateValue.Size = new Size(49, 21);
+            LblStateValue.TabIndex = 81;
+            LblStateValue.Text = "Draft";
+            // 
+            // BtnConfirm
+            // 
+            BtnConfirm.Font = new Font("Segoe UI", 11F);
+            BtnConfirm.Location = new Point(9, 692);
+            BtnConfirm.Name = "BtnConfirm";
+            BtnConfirm.Size = new Size(85, 36);
+            BtnConfirm.TabIndex = 82;
+            BtnConfirm.Text = "Confirm";
+            BtnConfirm.UseVisualStyleBackColor = true;
+            BtnConfirm.Click += BtnConfirm_Click;
+            // 
+            // BtnComplete
+            // 
+            BtnComplete.Font = new Font("Segoe UI", 11F);
+            BtnComplete.Location = new Point(100, 692);
+            BtnComplete.Name = "BtnComplete";
+            BtnComplete.Size = new Size(95, 36);
+            BtnComplete.TabIndex = 83;
+            BtnComplete.Text = "Complete";
+            BtnComplete.UseVisualStyleBackColor = true;
+            BtnComplete.Click += BtnComplete_Click;
+            // 
+            // BtnCancel
+            // 
+            BtnCancel.Font = new Font("Segoe UI", 11F);
+            BtnCancel.Location = new Point(201, 692);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(78, 36);
+            BtnCancel.TabIndex = 84;
+            BtnCancel.Text = "Cancel";
+            BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
+            // 
+            // LblPriceInfo
+            // 
+            LblPriceInfo.AutoSize = true;
+            LblPriceInfo.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            LblPriceInfo.ForeColor = Color.DarkBlue;
+            LblPriceInfo.Location = new Point(659, 443);
+            LblPriceInfo.Name = "LblPriceInfo";
+            LblPriceInfo.Size = new Size(0, 15);
+            LblPriceInfo.TabIndex = 85;
+            // 
             // FormSale
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(972, 788);
+            ClientSize = new Size(972, 749);
             Controls.Add(LblPriceInfo);
             Controls.Add(BtnCancel);
             Controls.Add(BtnComplete);

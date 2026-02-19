@@ -539,5 +539,7 @@ namespace mart_management
                 new FormSaleDetail(sale).ShowDialog();
             }
         }
+
+     
     }
 }

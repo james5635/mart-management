@@ -22,16 +22,6 @@ namespace mart_management
             LblTitle = new Label();
             SuspendLayout();
             // 
-            // LblTitle
-            // 
-            LblTitle.AutoSize = true;
-            LblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            LblTitle.Location = new Point(12, 9);
-            LblTitle.Name = "LblTitle";
-            LblTitle.Size = new Size(310, 25);
-            LblTitle.TabIndex = 0;
-            LblTitle.Text = "Sales Report (Composite Pattern)";
-            // 
             // TvReport
             // 
             TvReport.Font = new Font("Segoe UI", 10F);
@@ -50,6 +40,16 @@ namespace mart_management
             TxtReportOutput.ScrollBars = ScrollBars.Both;
             TxtReportOutput.Size = new Size(380, 300);
             TxtReportOutput.TabIndex = 2;
+            // 
+            // LblTitle
+            // 
+            LblTitle.AutoSize = true;
+            LblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            LblTitle.Location = new Point(12, 9);
+            LblTitle.Name = "LblTitle";
+            LblTitle.Size = new Size(123, 25);
+            LblTitle.TabIndex = 0;
+            LblTitle.Text = "Sales Report";
             // 
             // FormReport
             // 

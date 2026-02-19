@@ -37,6 +37,7 @@
             BtnInventory = new Button();
             BtnProduct = new Button();
             BtnPurchase = new Button();
+            BtnReport = new Button();
             SuspendLayout();
             // 
             // BtnCategory
@@ -138,15 +139,14 @@
             BtnPurchase.UseVisualStyleBackColor = true;
             BtnPurchase.Click += BtnPurchase_Click;
             // 
-            // BtnReport (Composite Pattern)
+            // BtnReport
             // 
-            BtnReport = new Button();
             BtnReport.Font = new Font("Segoe UI", 12F);
             BtnReport.Location = new Point(12, 390);
             BtnReport.Name = "BtnReport";
             BtnReport.Size = new Size(288, 36);
             BtnReport.TabIndex = 9;
-            BtnReport.Text = "Report (Composite)";
+            BtnReport.Text = "Report";
             BtnReport.UseVisualStyleBackColor = true;
             BtnReport.Click += BtnReport_Click;
             // 
