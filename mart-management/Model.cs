@@ -49,7 +49,7 @@ namespace mart_management
             // 8. Payment (needs Sale)
             // NOTE: For simplicity, a placeholder hash is used. 
             // In a real app, generate this with a password hasher.
-            var placeholderHash = @"AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw=="; // Example hash
+            var placeholderHash = @"AQAAAAIAAYagAAAAEK45ThnVIMswRknV65zQCSHCGviFjMkuSj2cpYtEDfe/kJJTUe5U0JrSqwVMjsFqSw=="; // Example hash (the password is "password")
 
             // 1. Employee
             modelBuilder.Entity<Employee>().HasData(
